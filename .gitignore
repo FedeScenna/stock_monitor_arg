@@ -3,7 +3,13 @@
 *.pdf
 
 # --- Data: regenerable via scripts/ (fetch_data.py, weekly_screen.py, kronos_*.py) ---
-/data/
+# Ignore the bulk data, but keep the small weekly-screen + Kronos-forecast outputs
+# so the deployed app can display them.
+/data/*
+!/data/portfolio
+/data/portfolio/*
+!/data/portfolio/weekly_screen_*.csv
+!/data/portfolio/kronos_forecast_*.csv
 
 # --- Python ---
 __pycache__/
