@@ -1,0 +1,25 @@
+# --- Personal / sensitive — never publish ---
+# Brokerage account statements (ResumenDeCuenta_*.pdf)
+*.pdf
+
+# --- Data: regenerable via scripts/ (fetch_data.py, weekly_screen.py, kronos_*.py) ---
+/data/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# --- Local tooling / Claude Code / editors ---
+.claude/
+.vscode/
+.idea/
+
+# --- Caches / model weights (downloaded from HuggingFace at runtime) ---
+.cache/
+*.safetensors
+
+# --- OS ---
+.DS_Store
+Thumbs.db

@@ -1,0 +1,26 @@
+# spy_model — Python dependencies
+# Install with: pip install -r requirements.txt
+#
+# PyTorch must be installed separately with the correct CUDA version:
+#   pip install torch --index-url https://download.pytorch.org/whl/cu124
+# (this project was developed with torch==2.5.1+cu124 on RTX 3060 Laptop GPU)
+
+# Data
+yfinance==1.2.0
+pandas==2.1.4
+numpy==1.26.4
+
+# Model
+torch>=2.0.0           # install via PyTorch wheel (see note above)
+einops==0.8.1
+safetensors==0.6.2
+huggingface_hub==0.33.1
+tqdm==4.67.1
+
+# Dashboard
+streamlit==1.30.0
+plotly==5.9.0
+
+# Utilities
+scipy==1.11.4
+requests==2.31.0
