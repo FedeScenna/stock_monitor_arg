@@ -4,9 +4,27 @@ Argentine CEDEAR portfolio analysis toolkit using the [Kronos](https://github.co
 
 ## Requirements
 
-- Python: `C:\Users\feder\anaconda3\python.exe`
-- PyTorch with CUDA 12.4 (RTX 3060 Laptop GPU used automatically)
-- Dependencies: `yfinance`, `pandas`, `numpy`, `torch`, `streamlit`, `plotly`, `huggingface_hub`
+- Python 3.11
+- Dashboard / screening / data deps: `pip install -r requirements.txt`
+  (`streamlit`, `plotly`, `pandas`, `numpy`, `yfinance`, `scipy`)
+- Kronos forecasting scripts only: `pip install -r requirements-kronos.txt`
+  plus PyTorch with the right CUDA wheel (RTX 3060 Laptop GPU used automatically)
+
+> The Streamlit dashboard (`app.py`) does **not** require PyTorch — only the
+> `kronos_*` / `cedear_full_screen` scripts do. That keeps the deployed app lean.
+
+## Deploy to Streamlit Community Cloud
+
+1. Push this repo to GitHub (already at `FedeScenna/stock_monitor_arg`).
+2. Go to [share.streamlit.io](https://share.streamlit.io) → sign in with GitHub → **Create app**.
+3. Repo `FedeScenna/stock_monitor_arg`, branch `main`, main file `app.py` → **Deploy**.
+
+Streamlit Cloud installs `requirements.txt` (the lean app stack). This repo is **code-only**
+(no `data/` committed), so on the deployed app the **Stock Charts** page works live via
+yfinance, while **Weekly Screen / Kronos Forecast / Portfolio** show "run the script" notices
+until their CSVs exist. To populate them, run the scripts locally (e.g. `scripts/weekly_screen.py`,
+`scripts/kronos_forecast.py`) and commit the resulting `data/portfolio` + `data/fundamentals`
+files, or generate them in your own deployment.
 
 ---
 
