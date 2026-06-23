@@ -1,12 +1,12 @@
 # App + screening + data dependencies.
-# This is the file Streamlit Community Cloud installs — kept lean so the
-# dashboard (app.py) deploys without the heavy PyTorch / Kronos stack.
-# For the Kronos forecasting scripts, ALSO install requirements-kronos.txt.
+# This is the file Streamlit Community Cloud installs — kept lean (no PyTorch)
+# and using lower-bound pins so pip resolves wheels for whatever Python the
+# Cloud runs (3.11–3.13). For the Kronos scripts, ALSO install requirements-kronos.txt.
 
-streamlit==1.30.0
-plotly==5.9.0
-pandas==2.1.4
-numpy==1.26.4
-yfinance==1.2.0
-scipy==1.11.4
-requests==2.31.0
+streamlit>=1.40
+plotly>=5.22
+pandas>=2.2
+numpy>=1.26
+yfinance>=1.2.0
+scipy>=1.13
+requests>=2.31
