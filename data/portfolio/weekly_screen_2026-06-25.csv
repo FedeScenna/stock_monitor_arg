@@ -1,0 +1,281 @@
+ticker,name,last_close,dollar_vol_20d,rsi,sma200,wma20,ema9,ema21,macd,macd_signal,below_sma200,below_wma20,cross_up,cross_down,rsi_buy,rsi_sell,p_tbv,tbvps,fcf,debt_to_equity,current_ratio,tbv_yoy,q_ptbv,q_fcf,q_dte,q_cr,q_tbv_growth,value_hit,confluence
+WB,Weibo Corp,7.21,11571076.0,23.46,9.897,8.606,7.3984,7.6232,-0.2445,-0.2252,True,True,False,False,True,False,0.4844,14.8855,,0.4743,3.021,0.1384,True,False,True,True,True,False,3
+AGRO,Adecoagro SA,9.3,10454328.0,28.26,9.924,11.8535,9.7932,10.7796,-0.9808,-0.8082,True,True,False,False,True,False,0.9025,10.3044,-72121248.0,1.1627,1.736,0.0522,True,False,False,True,True,False,3
+SHEL,Shell PLC,77.33,560012200.0,27.03,78.9138,85.5875,80.1336,82.4522,-2.109,-1.385,True,True,False,False,True,False,1.4827,52.1533,15633999872.0,0.4332,1.275,-0.0332,False,True,True,True,False,False,3
+JD,JD.com Inc,25.19,228466322.0,24.53,29.3756,28.2854,26.8393,28.0323,-1.0876,-0.7476,True,True,False,False,True,False,1.5822,15.9213,7005875200.0,0.3848,1.18,-0.0879,False,True,True,True,False,False,3
+STLA,Stellantis NV,5.74,124660990.0,26.11,8.9643,7.327,6.2748,6.7396,-0.4335,-0.3099,True,True,False,False,True,False,1.5974,3.5934,-5823000064.0,0.7866,1.035,-0.6829,False,False,True,True,False,False,3
+TCOM,Trip.com Group,40.49,161740328.0,27.39,61.4818,50.3525,45.2127,46.6784,-1.4744,-1.1697,True,True,False,False,True,False,1.8614,21.7522,2189499904.0,0.1832,1.549,0.3905,False,True,True,True,True,False,3
+PKX,POSCO Holdings,52.17,30421891.0,24.98,59.8634,66.1575,57.7159,62.5461,-4.693,-3.7481,True,True,False,False,True,False,1.8703,27.8944,-1966300200960.0,0.4997,1.898,-0.0063,False,False,True,True,False,False,3
+BABA,Alibaba Group,95.07,1394971072.0,16.81,148.2326,128.8204,105.0622,113.0409,-7.7955,-6.1292,True,True,False,False,True,False,1.9043,49.9228,-44074250240.0,0.2501,1.282,0.0902,False,False,True,True,True,False,3
+DOW,Dow Inc,29.31,417229757.0,23.93,29.4241,35.3648,31.1805,32.8916,-1.6858,-1.3325,True,True,False,False,True,False,3.3889,8.6489,-675875008.0,1.1713,1.848,-0.0743,False,False,False,True,False,False,3
+SID,Cia Siderurgica Nacional,0.9567,6570799.0,28.74,1.5121,1.3068,1.0672,1.153,-0.0787,-0.0534,True,True,False,False,True,False,3.5319,0.2709,-2192784384.0,3.2393,1.11,0.02,False,False,False,True,True,False,3
+SE,Sea Ltd,89.01,318168182.0,50.43,121.051,89.945,89.5642,88.8624,0.5112,0.0949,True,True,True,False,False,False,4.2752,20.8203,885241600.0,0.2761,1.578,0.5065,False,True,True,True,True,False,3
+GLOB,Globant SA,27.73,62593746.0,23.61,53.514,42.41,31.6701,34.8846,-2.996,-2.0612,True,True,False,False,True,False,8.0643,3.4386,267834880.0,0.2112,1.818,0.4261,False,True,True,True,True,False,3
+BP,BP PLC,37.72,356399775.0,27.36,38.5586,42.7023,39.663,41.2341,-1.46,-1.0224,True,True,False,False,True,False,10.6739,3.5339,10053125120.0,0.9638,1.219,-0.1169,False,True,True,True,False,False,3
+MSFT,Microsoft Corp,352.83,17291692174.0,28.74,447.6517,399.0787,376.1206,392.3819,-14.1347,-8.6772,True,True,False,False,True,False,10.7901,32.6995,37011251200.0,0.3027,1.283,0.6552,False,True,True,True,True,False,3
+ACN,Accenture PLC,125.82,1473913948.0,23.52,222.0684,184.6606,140.3741,155.5289,-13.651,-8.7824,True,True,False,False,True,False,12.0522,10.4395,12089380864.0,0.2504,1.339,0.4652,False,True,True,True,True,False,3
+PLTR,Palantir Technologies,107.27,5988455326.0,27.37,159.0936,139.0115,121.1214,128.7652,-6.644,-3.8466,True,True,False,False,True,False,30.4312,3.525,1752997120.0,0.0248,6.907,0.4765,False,True,True,True,True,False,3
+LVS,Las Vegas Sands,46.28,215646610.0,29.81,56.3979,52.7525,48.2341,49.4302,-1.1624,-0.8649,True,True,False,False,True,False,40.0416,1.1558,1622625024.0,9.814,0.921,-0.5652,False,True,False,False,False,False,3
+ADBE,Adobe Inc,193.41,1931568106.0,28.36,292.2083,242.9215,202.9236,218.2669,-14.6391,-11.2139,True,True,False,False,True,False,,,9218374656.0,0.6144,0.751,-4.2318,False,True,True,False,False,False,3
+BIDU,Baidu Inc,103.99,278701789.0,27.77,127.9049,122.778,111.3268,117.811,-6.1176,-4.6519,True,True,False,False,True,False,,,,,,,False,False,False,False,False,False,3
+BIOX,Bioceres Crop Solutions,0.3251,129378.0,28.9,1.0275,0.478,0.3749,0.4053,-0.0294,-0.0216,True,True,False,False,True,False,,,,2.5105,0.876,-2.1634,False,False,False,False,False,False,3
+BAK,Braskem SA,2.67,10104006.0,24.96,3.4139,3.8428,3.1122,3.4857,-0.3435,-0.2445,True,True,False,False,True,False,,,-6892624896.0,,0.71,,False,False,False,False,False,False,3
+BNG,Bunge Global SA,0.095,24.0,4.76,189.0882,222.8897,216.2895,239.475,-13.4248,4.8281,True,True,False,False,True,False,,,,,,,False,False,False,False,False,False,3
+XLC,Communication Services Select Sector ETF,105.58,789913345.0,25.26,114.8836,113.8967,108.3972,110.735,-2.2099,-1.6294,True,True,False,False,True,False,,,,,,,False,False,False,False,False,False,3
+DTEGY,Deutsche Telekom AG,29.85,20668375.0,29.87,33.074,34.3563,30.7518,31.6572,-0.8343,-0.5646,True,True,False,False,True,False,,,18050500608.0,1.6187,1.18,,False,True,False,True,False,False,3
+FXI,iShares China Large-Cap ETF,31.68,989128874.0,23.43,37.9314,35.8228,33.2036,34.1296,-0.8748,-0.6274,True,True,False,False,True,False,,,,,,,False,False,False,False,False,False,3
+NFLX,Netflix Inc,70.9,3608965735.0,19.05,97.3012,88.7385,75.1925,79.3078,-4.1126,-3.3085,True,True,False,False,True,False,,,25993676800.0,0.5379,1.407,,False,True,True,True,False,False,3
+PFE,Pfizer Inc,23.67,1133164424.0,25.08,25.5465,26.4278,24.8757,25.364,-0.4138,-0.2045,True,True,False,True,True,False,,,12376625152.0,0.716,1.247,,False,True,True,True,False,False,3
+NSANY,Nissan Motor Co,3.75,996947.0,31.71,4.7807,4.6175,4.0418,4.2489,-0.1835,-0.1147,True,True,False,False,False,False,0.2327,16.2449,-1249823555584.0,1.7018,1.56,-0.1818,True,False,False,True,False,False,2
+TV,Grupo Televisa,2.72,2882940.0,43.53,2.8796,2.9335,2.7945,2.8035,-0.0092,-0.0036,True,True,False,True,False,False,0.4523,6.0139,2405078272.0,0.8488,2.387,-0.1393,True,True,True,True,False,False,2
+KEP,Korea Electric Power,12.46,15909691.0,43.54,16.012,15.3845,12.5612,12.824,-0.343,-0.3778,True,True,False,False,False,False,0.4956,25.1409,5256119844864.0,2.5555,0.429,0.211,True,True,False,False,True,False,2
+HMC,Honda Motor Co,26.14,56524813.0,49.59,28.7063,26.25,26.1729,26.2505,0.046,0.222,True,True,False,False,False,False,0.4968,52.616,-1265908449280.0,1.1357,1.281,-0.015,True,False,False,True,False,False,2
+BSBR,Banco Santander Brasil,5.16,9545051.0,37.92,5.9304,5.8255,5.2572,5.3411,-0.0984,-0.0968,True,True,False,False,False,False,0.5365,9.6174,,,,0.0609,True,False,False,False,True,False,2
+MBGAF,Mercedes-Benz Group AG,50.88,1642779.0,31.25,63.7871,60.1855,52.6479,54.7464,-2.0074,-1.494,True,True,False,False,False,False,0.5734,88.0604,-4120750080.0,1.0452,1.389,-0.0065,True,False,False,True,False,False,2
+ERIC,Ericsson LM,11.06,128703294.0,36.66,10.4381,11.6933,11.544,11.9614,-0.3408,-0.1815,False,True,False,False,False,False,0.7402,14.9425,29486125056.0,0.381,1.121,1.0716,True,True,True,True,True,True,2
+GT,Goodyear Tire & Rubber,6.44,53397082.0,57.06,7.6482,6.8665,6.1835,6.1326,0.0079,-0.0475,True,True,False,False,False,False,0.7879,8.1736,145750000.0,2.5306,1.04,-0.1897,True,True,False,True,False,False,2
+LND,BrasilAgro,3.51,190945.0,31.48,3.8376,3.916,3.584,3.6649,-0.0807,-0.0637,True,True,False,False,False,False,0.8717,4.0265,-162346256.0,0.7074,1.474,-0.0091,True,False,True,True,False,False,2
+SPCE,Virgin Galactic Holdings,2.5,366108689.0,40.19,3.2731,3.0195,3.265,3.6156,-0.1922,0.0772,True,True,False,False,False,False,0.9098,2.748,-313179616.0,1.6481,1.003,-0.1499,True,False,False,True,False,False,2
+LAC,Lithium Americas Corp,3.85,58200952.0,32.39,5.0902,4.6005,4.2222,4.5042,-0.2614,-0.1896,True,True,False,False,False,False,0.9951,3.869,-1303825280.0,0.468,7.36,0.6673,True,False,True,True,True,False,2
+AIG,American International Group,74.85,302065165.0,48.69,77.0272,76.1938,75.2954,75.0917,0.0653,-0.1479,True,True,False,False,False,False,1.0771,69.4892,9517249536.0,0.2265,0.611,-0.0369,False,True,True,False,False,False,2
+PAGS,PagSeguro Digital,8.74,28497126.0,41.53,9.908,9.7658,8.8103,8.9405,-0.1775,-0.2087,True,True,False,False,False,False,1.1111,7.8664,5231180800.0,0.1759,1.425,-0.0234,False,True,True,True,False,False,2
+BBD,Banco Bradesco,3.35,96227073.0,41.19,3.5418,3.6626,3.399,3.4389,-0.0535,-0.062,True,True,False,False,False,False,1.1972,2.7982,,,,0.0554,False,False,False,False,True,False,2
+PBR,Petrobras,16.52,258939019.0,28.7,15.5935,18.7883,17.0153,17.7396,-0.7718,-0.71,False,True,False,False,True,False,1.2759,12.9478,82932752384.0,0.8327,0.743,0.1389,False,True,True,False,True,False,2
+STNE,StoneCo Ltd,10.79,48473768.0,46.72,14.9426,12.7697,10.8068,10.8807,-0.1191,-0.1423,True,True,False,False,False,False,1.3589,7.9404,2311869440.0,1.3364,1.335,0.4258,False,True,False,True,True,False,2
+E,ENI SPA,46.79,21791415.0,25.06,43.7803,51.5839,49.3352,51.214,-1.6365,-0.9863,False,True,False,False,True,False,1.4021,33.3725,-939374976.0,0.6736,1.16,-0.0956,False,False,True,True,False,False,2
+SUZ,Suzano SA,8.1,27038344.0,42.17,9.3201,9.3053,8.1813,8.2517,-0.1055,-0.1262,True,True,False,False,False,False,1.5276,5.3023,-1823903104.0,2.0235,3.515,0.697,False,False,False,True,True,False,2
+MUX,McEwen Mining,17.32,21520667.0,36.33,20.7861,22.269,18.45,19.4522,-1.0544,-0.9386,True,True,False,False,False,False,1.5724,11.015,21460376.0,0.1965,1.136,0.1036,False,True,True,True,True,False,2
+TTE,TotalEnergies SE,78.28,131988171.0,21.33,74.1366,85.9385,81.5537,84.6644,-2.8168,-1.9063,False,True,False,False,True,False,1.7075,45.8435,10052124672.0,0.513,1.076,-0.0506,False,True,True,True,False,False,2
+BASFY,BASF SE,13.66,2346134.0,32.74,13.7009,14.6226,13.9628,14.2715,-0.3164,-0.2772,True,True,False,False,False,False,1.7465,7.9188,-1570625024.0,0.6672,1.913,-0.0048,False,False,True,True,False,False,2
+CDE,Coeur Mining,15.99,695285555.0,41.76,18.9593,19.4293,16.7527,17.2674,-0.5023,-0.3733,True,True,False,False,False,False,1.9586,8.1638,511841376.0,0.0743,3.731,1.3924,False,True,True,True,True,False,2
+XP,XP Inc,15.78,92509856.0,45.24,18.2351,18.3151,15.6757,15.9743,-0.4509,-0.5855,True,True,False,False,False,False,1.9683,8.0172,,6.7735,1.39,0.1938,False,False,False,True,True,False,2
+PAAS,Pan American Silver,44.99,250919178.0,37.22,49.7653,55.0199,47.3824,49.53,-2.205,-1.8983,True,True,False,False,False,False,2.5782,17.45,1300125056.0,0.1149,2.84,0.4875,False,True,True,True,True,False,2
+ZM,Zoom Video Communications,82.88,432303013.0,32.5,87.2356,89.449,87.9652,92.7427,-4.0256,-2.368,True,True,False,False,False,False,2.6234,31.5931,1981199232.0,0.006,4.221,0.0896,False,True,True,True,True,False,2
+YELP,Yelp Inc,22.92,28978309.0,47.04,27.4681,24.203,22.9499,23.1869,-0.3573,-0.4539,True,True,False,False,False,False,2.7445,8.3514,281926880.0,0.2455,1.739,-0.0509,False,True,True,True,False,False,2
+HMY,Harmony Gold Mining,15.12,73504885.0,42.4,18.2161,17.1324,15.8251,16.2416,-0.3597,-0.2055,True,True,False,True,False,False,2.9895,5.0577,15133625344.0,0.2547,0.542,0.1737,False,True,True,False,True,False,2
+KGC,Kinross Gold,24.04,252440354.0,36.66,28.9063,30.3141,25.4645,26.5924,-1.1935,-1.0527,True,True,False,False,False,False,3.1553,7.619,2846512384.0,0.082,2.842,0.2499,False,True,True,True,True,False,2
+NEM,Newmont Corp,95.35,955986295.0,38.98,102.6925,111.1112,99.5222,102.498,-3.0389,-2.5418,True,True,False,False,False,False,3.1788,29.9954,9804874752.0,0.1576,2.443,0.1444,False,True,True,True,True,False,2
+AEM,Agnico Eagle Mines,156.18,524658752.0,38.65,184.6357,195.2955,162.3346,167.7451,-6.1465,-5.9098,True,True,False,False,False,False,3.5726,43.7163,4282917376.0,0.0121,3.148,0.2345,False,True,True,True,True,False,2
+HL,Hecla Mining,15.15,400191766.0,42.51,17.8623,18.694,15.4488,16.0001,-0.6423,-0.6517,True,True,False,False,False,False,3.9526,3.8329,277069760.0,0.1109,4.94,0.2707,False,True,True,True,True,False,2
+EQNR,Equinor ASA,31.56,137036826.0,29.1,29.5211,35.9346,33.2017,34.9111,-1.5812,-1.1204,False,True,False,False,True,False,4.0626,7.7685,18090625024.0,0.73,1.239,-0.049,False,True,True,True,False,False,2
+PYPL,PayPal Holdings,42.38,708672778.0,45.33,54.1626,44.7464,42.2918,42.7844,-0.7132,-0.9077,True,True,False,False,False,False,4.1639,10.1778,4083500032.0,0.5828,1.259,-0.0076,False,True,True,True,False,False,2
+NKE,Nike Inc,40.9,1019473729.0,36.0,57.6632,48.7138,43.0448,43.7048,-0.5379,-0.1805,True,True,False,True,False,False,4.4648,9.1605,1313874944.0,0.7933,2.139,-0.0874,False,True,True,True,False,False,2
+COIN,Coinbase Global,142.52,1447797239.0,33.02,235.1495,179.407,157.1341,165.1281,-8.4239,-7.5332,True,True,False,False,False,False,4.4651,31.9186,2407562752.0,0.5908,2.141,0.015,False,True,True,True,True,False,2
+VIV,Telefonica Brasil,13.37,14023684.0,49.97,13.6887,14.8078,13.1281,13.2471,-0.2196,-0.3186,True,True,False,False,False,False,5.2285,2.5571,,0.2848,1.099,-0.0333,False,False,True,True,False,False,2
+NU,Nu Holdings Ltd,12.46,773968955.0,46.65,15.3374,13.996,12.5076,12.5573,-0.1488,-0.2546,True,True,False,False,False,False,5.286,2.3572,,,,0.4932,False,False,False,False,True,False,2
+NXE,NexGen Energy,9.65,71637341.0,38.19,10.526,11.4945,10.2176,10.536,-0.3603,-0.3555,True,True,False,False,False,False,5.3422,1.8064,-280498752.0,0.4247,1.366,0.5539,False,False,True,True,True,False,2
+SONY,Sony Corp,19.32,125510886.0,34.14,24.3953,21.1735,20.0842,20.7053,-0.5358,-0.3263,True,True,False,False,False,False,5.7159,3.38,-1357953368064.0,0.1951,1.182,-0.1397,False,False,True,True,False,False,2
+DOCU,DocuSign Inc,42.46,237383461.0,38.65,58.1268,46.5055,43.8205,45.4942,-1.5333,-1.1066,True,True,False,False,False,False,6.1796,6.871,1250368768.0,0.1007,0.665,-0.0502,False,True,True,False,False,False,2
+DIS,Walt Disney Co,98.05,1049808864.0,40.34,106.5381,101.742,101.0271,101.3736,-0.4034,-0.4205,True,True,False,False,False,False,6.3335,15.4811,3751375104.0,0.4107,0.679,0.6417,False,True,True,False,True,False,2
+META,Meta Platforms,542.87,11212847053.0,34.27,650.386,611.8493,566.5867,582.416,-15.5743,-12.3003,True,True,False,False,False,False,6.4985,83.5382,25558249472.0,0.3561,2.348,0.1735,False,True,True,True,True,False,2
+GFI,Gold Fields Ltd,32.82,152807339.0,35.88,43.4452,44.1255,35.1059,36.9732,-1.9509,-1.6551,True,True,False,False,False,False,6.9622,4.714,2546112512.0,0.3714,1.793,0.6212,False,True,True,True,True,False,2
+ABT,Abbott Laboratories,93.24,1258938947.0,61.3,112.429,97.5775,90.167,89.45,0.3668,-0.1098,True,True,False,False,False,False,7.2055,12.9401,6341125120.0,0.6477,1.388,0.2602,False,True,True,True,True,False,2
+SCHW,Charles Schwab,89.44,1153572954.0,46.75,94.4006,91.8123,91.2265,90.6232,0.486,0.303,True,True,False,False,False,False,7.7056,11.6072,,1.2077,0.632,0.2046,False,False,False,False,True,False,2
+ISRG,Intuitive Surgical,399.69,1075550602.0,37.19,489.565,453.588,406.0026,414.0044,-9.1707,-8.9726,True,True,False,False,False,False,8.2834,48.2519,2254087424.0,,4.61,0.0859,False,True,False,True,True,False,2
+INFY,Infosys Ltd,10.57,262854212.0,34.01,15.2952,12.8816,11.1018,11.5553,-0.4354,-0.3192,True,True,False,False,False,False,10.421,1.0143,3170249984.0,0.0983,1.978,-0.1536,False,True,True,True,False,False,2
+SPOT,Spotify Technology,441.21,928505895.0,36.79,551.0563,485.689,462.0049,471.9117,-7.1198,-1.4155,True,True,False,False,False,False,10.6835,41.2984,707750016.0,0.0594,2.06,0.685,False,True,True,True,True,False,2
+SAP,SAP SE,148.06,539263583.0,31.79,215.8554,177.3456,156.8906,164.6361,-6.6928,-3.9469,True,True,False,False,False,False,11.1108,13.3258,8143750144.0,0.1733,1.069,0.1589,False,True,True,True,True,False,2
+MELI,MercadoLibre Inc,1619.25,862009132.0,47.03,1958.4576,1722.8815,1624.462,1636.7591,-17.1437,-20.5001,True,True,False,False,False,False,11.6121,139.4456,-4104624896.0,1.6998,1.161,0.5822,False,False,False,True,True,False,2
+SHOP,Shopify Inc,111.62,1053577611.0,50.8,136.9041,116.288,110.629,110.7075,-0.3359,-0.5624,True,True,False,False,False,False,12.0822,9.2384,1256749952.0,0.0143,6.196,0.1685,False,True,True,True,True,False,2
+NOW,ServiceNow Inc,89.52,3557736766.0,37.43,134.9641,102.1005,96.6736,100.9508,-2.9753,-0.5264,True,True,False,False,False,False,12.3475,7.25,5108125184.0,0.2073,0.845,0.017,False,True,True,False,True,False,2
+WMT,Walmart Inc,115.78,2921763981.0,37.54,116.5567,124.3689,118.3221,119.7046,-1.6688,-1.7762,True,True,False,False,False,False,13.7337,8.4304,6862249984.0,0.7482,0.771,0.1392,False,True,True,False,True,False,2
+TM,Toyota Motor Corp,166.5,109354466.0,30.63,205.8578,201.8835,171.1877,176.3609,-5.5995,-5.0616,True,True,False,False,False,False,14.5501,11.4432,-1204836106240.0,1.0706,1.274,0.1147,False,False,False,True,True,False,2
+NG,NovaGold Resources,6.15,26040708.0,32.37,9.1935,9.066,7.118,7.5338,-0.4008,-0.2863,True,True,False,False,False,False,15.2605,0.403,-23863124.0,0.4141,112.823,,False,False,True,True,False,False,2
+NTES,NetEase Inc,114.82,111685828.0,37.77,128.9006,116.2079,119.6734,120.2577,0.1126,1.1842,True,True,False,False,False,False,15.8147,7.2603,34148839424.0,0.0647,3.285,0.1692,False,True,True,True,True,False,2
+SNAP,Snap Inc,4.34,259675935.0,30.29,6.5897,5.1895,4.7685,5.1381,-0.3229,-0.1992,True,True,False,False,False,False,16.3187,0.266,673405888.0,2.0158,3.525,-0.2676,False,True,False,True,False,False,2
+HDB,HDFC Bank Ltd,25.37,229619960.0,58.77,31.1679,26.54,24.9477,24.6093,0.1893,-0.0447,True,True,False,False,False,False,17.3542,1.4619,,,,0.1925,False,False,False,False,True,False,2
+TSLA,Tesla Inc,375.12,18654391619.0,38.94,417.801,395.61,390.6341,399.9478,-7.3834,-3.4728,True,True,False,False,False,False,17.4258,21.5267,5251999744.0,0.1874,2.043,0.1302,False,True,True,True,True,False,2
+NIO,NIO Inc,4.73,177657275.0,31.26,5.7974,5.5545,5.0253,5.2635,-0.2466,-0.2157,True,True,False,False,False,False,19.4224,0.2435,,1.833,1.009,-0.3142,False,False,False,True,False,False,2
+COST,Costco Wholesale,942.24,2415342143.0,36.5,956.8379,995.0363,960.4134,973.589,-13.5165,-11.8159,True,True,False,False,False,False,25.276,37.278,6954375168.0,0.6026,1.072,0.2346,False,True,True,True,True,False,2
+AMZN,Amazon.com Inc,227.01,12390140418.0,33.63,232.7954,235.2605,236.8158,244.2758,-6.8745,-5.1288,True,True,False,False,False,False,,,,,,,False,False,False,False,False,False,2
+T,AT&T Inc,22.42,1233445464.0,37.9,25.7701,26.104,22.6319,23.2147,-0.6777,-0.6884,True,True,False,False,False,False,,,,,,,False,False,False,False,False,False,2
+AVY,Avery Dennison Corp,164.61,123312140.0,59.92,171.4875,168.9035,160.3851,159.3316,0.4366,-0.4723,True,True,False,False,False,False,,,,,,,False,False,False,False,False,False,2
+BA,Boeing,218.12,1340628141.0,47.07,218.3974,221.0785,220.276,220.8837,-0.6925,-0.7033,True,True,False,False,False,False,,,2554249984.0,8.287,1.176,,False,True,False,True,False,False,2
+SBS,Cia Saneamento Basico,5.63,39477071.0,37.03,20.9752,16.4678,5.4878,5.7375,-0.579,-0.8402,True,True,False,False,False,False,,,-10152844288.0,1.1784,1.739,,False,False,False,True,False,False,2
+XLY,Consumer Discretionary Select Sector ETF,113.35,895661686.0,41.46,117.3369,115.268,115.2795,116.2385,-0.8094,-0.469,True,True,False,False,False,False,,,,,,,False,False,False,False,False,False,2
+DEO,Diageo PLC,82.61,104157310.0,54.76,87.3968,82.3825,81.3966,81.2499,0.0299,-0.2106,True,False,True,False,False,False,,,958124992.0,1.7738,1.604,,False,True,False,True,False,False,2
+EFX,Equifax Inc,151.93,313987207.0,37.26,201.0237,177.2323,157.1562,161.4251,-4.1449,-3.0585,True,True,False,False,False,False,,,1024662528.0,1.1335,0.607,,False,True,False,False,False,False,2
+GILD,Gilead Sciences,123.84,1165963584.0,41.08,128.6857,135.7517,124.9873,126.5308,-1.8292,-1.905,True,True,False,False,False,False,,,7934125056.0,0.9464,1.967,,False,True,True,True,False,False,2
+ASR,Grupo Aeroportuario Sur,309.61,20252903.0,57.48,321.3214,321.0416,300.6096,298.2724,0.6004,-1.908,True,True,False,False,False,False,,,3374900224.0,0.7152,3.393,,False,True,True,True,False,False,2
+HSY,Hershey Co,176.68,418222179.0,43.47,192.4775,199.5809,178.3316,181.0825,-3.2688,-3.4323,True,True,False,False,False,False,,,1527240576.0,1.2001,1.24,,False,True,False,True,False,False,2
+IBIT,iShares Bitcoin Trust,33.52,1959727113.0,31.18,48.6598,39.843,35.3622,37.1002,-1.8906,-1.8055,True,True,False,False,False,False,,,,,,,False,False,False,False,False,False,2
+PHG,Koninklijke Philips,27.29,31058459.0,58.53,27.8635,27.5642,26.7235,26.4997,0.1611,0.0498,True,True,False,False,False,False,,,1518125056.0,0.7091,1.317,,False,True,True,True,False,False,2
+LMT,Lockheed Martin,505.02,679929534.0,43.21,536.0176,575.8367,510.7736,518.3732,-7.2775,-4.6178,True,True,False,True,False,False,,,3987124992.0,2.7637,1.135,,False,True,False,True,False,False,2
+MA,Mastercard Inc,488.92,1969517909.0,47.93,531.6699,500.5456,490.2226,491.1022,-1.5148,-2.0804,True,True,False,False,False,False,,,16148124672.0,2.8206,0.981,,False,True,False,False,False,False,2
+MCD,McDonald's Corp,264.54,1277705134.0,33.37,302.5028,298.982,274.8148,277.8335,-2.8604,-1.7056,True,True,False,True,False,False,,,5952249856.0,,1.136,,False,True,False,True,False,False,2
+MDT,Medtronic PLC,80.52,973978063.0,53.53,90.8118,84.531,79.9985,79.5512,0.3026,0.134,True,True,False,False,False,False,,,4625375232.0,0.5821,2.126,,False,True,True,True,False,False,2
+MSI,Motorola Solutions,397.01,466062462.0,43.14,420.4357,430.1103,399.2146,403.5065,-4.6585,-4.0401,True,True,False,False,False,False,,,1815124992.0,3.7413,1.071,,False,True,False,True,False,False,2
+ORLY,O'Reilly Automotive,86.9,697512201.0,41.9,95.227,91.5345,87.9081,88.8089,-0.9402,-0.7999,True,True,False,False,False,False,,,1330813184.0,,0.755,,False,True,False,False,False,False,2
+ORCL,Oracle Corp,152.46,6122604534.0,30.86,202.7449,169.6411,173.8665,186.2086,-8.7301,-2.0387,True,True,False,False,False,False,,,-24536750080.0,3.8887,1.115,,False,False,False,True,False,False,2
+PEP,PepsiCo Inc,139.52,1355850801.0,37.86,148.6005,152.9133,141.9957,143.3958,-1.7126,-1.7814,True,True,False,False,False,False,,,8746250240.0,2.4484,0.897,,False,True,False,False,False,False,2
+CRM,Salesforce Inc,150.19,3306966019.0,31.88,213.7252,180.4011,157.0029,165.9128,-8.2051,-5.7513,True,True,False,False,False,False,,,16552999936.0,1.2428,0.786,-2.0278,False,True,False,False,False,False,2
+SPGI,S&P Global Inc,395.14,959569034.0,37.72,464.9824,421.6434,408.2877,413.8946,-4.6663,-2.1148,True,True,False,True,False,False,,,5298874880.0,0.3839,0.677,,False,True,True,False,False,False,2
+TMUS,T-Mobile US,181.57,1082509738.0,44.28,204.6295,198.5461,182.6123,184.2093,-1.9807,-2.0932,True,True,False,False,False,False,,,11147374592.0,2.1857,1.087,,False,True,False,True,False,False,2
+TMO,Thermo Fisher Scientific,505.75,1113023936.0,63.89,525.105,482.7199,480.2868,475.4776,3.4626,0.9061,True,False,True,False,False,False,,,5520625152.0,0.829,1.526,,False,True,True,True,False,False,2
+UL,Unilever NV,60.54,245187007.0,62.98,64.0007,61.1584,58.9741,58.2127,0.592,0.2595,True,True,False,False,False,False,,,6273124864.0,1.6079,0.788,,False,True,False,False,False,False,2
+VRSN,VeriSign Inc,250.85,247100676.0,30.03,257.3052,261.7885,260.4823,272.1108,-9.5995,-5.2367,True,True,False,False,False,False,,,807275008.0,,0.462,,False,True,False,False,False,False,2
+GGB,Gerdau SA,4.14,82817435.0,36.88,3.8657,4.1564,4.305,4.444,-0.102,-0.0329,False,True,False,False,False,False,1.0517,3.9363,2299379712.0,0.2902,2.758,-0.064,False,True,True,True,False,False,1
+CVX,Chevron Corp,172.24,1639940131.0,34.39,170.6716,187.9093,176.6523,180.9361,-3.8401,-2.4521,False,True,False,False,False,False,1.9005,90.6298,11776499712.0,0.2399,1.094,0.2311,False,True,True,True,True,False,1
+GPRK,GeoPark Ltd,9.12,7478555.0,36.09,8.2845,9.3627,9.8628,10.1346,-0.1343,0.0969,False,True,False,False,False,False,2.0164,4.523,144452128.0,2.1649,1.0,0.2091,False,True,False,True,True,False,1
+UGP,Ultrapar Participacoes,4.86,14633446.0,38.98,4.6854,5.3545,4.8636,5.0009,-0.1777,-0.2115,False,True,False,False,False,False,2.062,2.3569,2887691776.0,1.1411,1.666,-0.068,False,True,False,True,False,False,1
+XOM,Exxon Mobil,137.55,2565800284.0,35.41,134.2755,150.9242,140.3698,144.2546,-3.6812,-2.7352,False,True,False,False,False,False,2.2161,62.069,11630499840.0,0.1826,1.036,-0.0164,False,True,True,True,False,False,1
+VALE,Vale SA,15.12,371225949.0,41.71,14.1388,16.0355,15.3662,15.642,-0.2856,-0.2509,False,True,False,False,False,False,2.3731,6.3713,10600125440.0,0.5715,1.24,0.0727,False,True,True,True,True,False,1
+ITUB,Itau Unibanco,8.03,179513339.0,53.62,7.6558,8.3325,7.9071,7.8977,-0.0319,-0.0827,False,True,False,False,False,False,2.4854,3.2309,,,,-0.0358,False,False,False,False,False,False,1
+RIO,Rio Tinto PLC,95.11,284698809.0,37.04,84.6329,97.4144,98.7778,101.2893,-1.8673,-0.6266,False,True,False,False,False,False,2.7232,34.9263,3495749888.0,0.3543,1.445,0.0856,False,True,True,True,True,False,1
+ARCO,Arcos Dorados Holdings,8.13,10141181.0,39.86,7.8142,8.4566,8.3443,8.4656,-0.105,-0.0605,False,True,False,True,False,False,2.7379,2.9694,182470624.0,2.7865,0.803,0.408,False,True,False,False,True,False,1
+VIST,Vista Energy,65.03,58281245.0,33.09,56.006,67.8465,67.7644,70.0436,-1.7965,-0.8117,False,True,False,False,False,False,2.7454,23.6873,-821809856.0,1.4506,0.769,0.5605,False,False,False,False,True,False,1
+IBN,ICICI Bank Ltd,29.14,204870728.0,72.15,29.2235,27.497,28.2436,27.479,0.6593,0.4018,True,False,False,False,False,True,2.8154,10.3501,,,,0.1541,False,False,False,False,True,False,1
+ANF,Abercrombie & Fitch,89.35,117319983.0,59.41,89.6892,86.703,86.9147,84.4845,2.2089,1.6788,True,False,False,False,False,False,2.9624,30.161,283367872.0,0.9546,1.448,0.0511,False,True,True,True,True,False,1
+GOLD,Barrick Gold Corp,41.45,17501070.0,47.03,38.7238,45.8947,42.0238,42.0419,-0.0815,-0.1013,False,True,False,False,False,False,3.1907,12.9907,-743910528.0,1.8241,1.176,-0.0735,False,False,False,True,False,False,1
+FDX,FedEx Corp,329.44,756930713.0,52.67,302.7279,341.0851,326.2381,326.0007,1.0494,2.3941,False,True,False,True,False,False,3.4542,95.3729,5534374912.0,1.3569,1.475,0.0147,False,True,False,True,True,False,1
+TS,Tenaris SA,57.36,74819114.0,39.45,48.0284,57.7721,58.6411,59.9317,-0.9773,-0.3629,False,True,False,False,False,False,3.6895,15.5468,1296321664.0,0.0273,4.145,0.0004,False,True,True,True,True,False,1
+HAL,Halliburton Co,34.67,487702198.0,32.4,32.2986,37.6641,35.9367,37.6182,-1.4737,-0.9293,False,True,False,False,False,False,3.7343,9.2842,2027000064.0,0.7465,2.083,-0.0189,False,True,True,True,False,False,1
+IP,International Paper,39.02,228726130.0,70.11,39.1372,36.431,36.8927,35.3668,1.3682,0.9305,True,False,False,False,False,True,3.7896,10.2965,1711250048.0,0.659,1.213,0.078,False,True,True,True,True,False,1
+VOD,Vodafone Group,13.86,47757205.0,34.53,13.6295,14.9834,14.2804,14.5759,-0.2575,-0.1468,False,True,False,False,False,False,3.8673,3.5839,5167374848.0,1.0015,1.137,-0.2564,False,True,False,True,False,False,1
+KB,KB Financial Group,99.99,33887096.0,41.63,95.4877,106.1355,103.8963,104.7742,-0.5907,0.0359,False,True,False,True,False,False,3.9837,25.0999,,,,0.0271,False,False,False,False,True,False,1
+PINS,Pinterest Inc,19.48,479051326.0,42.77,24.2831,19.1235,20.1121,20.3774,-0.127,0.1069,True,False,False,False,False,False,4.0101,4.8577,1080373120.0,0.4227,4.226,-0.0005,False,True,True,True,False,False,1
+GRMN,Garmin Ltd,235.41,204191936.0,48.17,227.6808,239.5606,236.2359,236.4532,-0.643,-1.1033,False,True,False,False,False,False,5.4841,42.9263,810156096.0,0.0233,4.361,0.1303,False,True,True,True,True,False,1
+DD,DuPont de Nemours,137.8,179742752.0,94.49,43.2681,51.8029,80.0006,63.252,12.6939,3.6508,False,False,True,False,False,True,6.0835,22.6515,-124750000.0,0.2259,2.683,-0.7567,False,False,True,True,False,False,1
+ROST,Ross Stores,215.13,801467285.0,36.97,192.1701,219.3476,228.8335,229.264,0.7661,2.555,False,True,False,True,False,False,10.9537,19.64,2047583488.0,0.7491,1.541,0.1231,False,True,True,True,True,False,1
+SCCO,Southern Copper Corp,174.73,270477693.0,43.91,161.1487,182.8327,181.9764,183.4848,-0.6162,0.9347,False,True,False,True,False,False,12.4234,14.0646,4255225088.0,0.6241,4.375,0.2047,False,True,True,True,True,False,1
+NGG,National Grid PLC,83.42,99604211.0,54.95,80.7054,85.5603,81.8475,81.8917,-0.3173,-0.6648,False,True,False,False,False,False,12.6095,6.6156,-3125125120.0,1.2129,0.764,0.0525,False,False,False,False,True,False,1
+SLB,Schlumberger Ltd,47.42,857192036.0,30.47,44.864,51.8223,49.6391,52.1115,-2.0349,-1.0496,False,True,False,False,False,False,16.3419,2.9017,3043124992.0,0.4251,1.341,0.2275,False,True,True,True,True,False,1
+TJX,TJX Companies,155.19,995576307.0,39.11,152.4349,157.826,162.6485,161.5735,1.6529,2.3855,False,True,False,False,False,False,16.6418,9.3253,4314250240.0,1.3631,1.139,0.2163,False,True,False,True,True,False,1
+GLW,Corning Inc,228.01,2730114318.0,64.31,123.1357,164.3181,199.8314,191.6661,7.0123,3.4023,False,False,True,False,False,False,23.8679,9.553,612000000.0,0.8036,1.61,0.144,False,True,True,True,True,False,1
+RACE,Ferrari NV,352.2,201639780.0,51.14,375.2781,347.9603,352.7402,351.0692,2.5616,3.6765,True,False,False,False,False,False,35.0659,10.0439,985850240.0,0.7225,2.569,0.2329,False,True,True,True,True,False,1
+MRK,Merck & Co,125.45,1471548290.0,66.91,105.1863,117.4646,119.1041,117.6455,1.2863,0.7471,False,False,True,False,False,False,81.7455,1.5346,14049250304.0,1.0694,1.299,-0.4748,False,True,False,True,False,False,1
+MO,Altria Group,73.21,597725256.0,61.8,63.3567,68.1558,71.0741,70.5418,0.5052,0.3059,False,False,True,False,False,False,,,8542875136.0,,0.619,,False,True,False,False,False,False,1
+AAPL,Apple Inc,275.15,16747413757.0,32.21,269.0119,275.6011,292.0182,295.463,-1.5749,1.2165,False,True,False,False,False,False,,,,,,,False,False,False,False,False,False,1
+AZN,AstraZeneca PLC,185.68,355288628.0,55.4,181.737,191.0735,180.8725,181.3978,-1.1952,-1.9887,False,True,False,False,False,False,,,,,,,False,False,False,False,False,False,1
+ADP,Automatic Data Processing,216.31,624618193.0,45.27,239.088,211.856,219.8634,220.6116,0.4308,2.0487,True,False,False,False,False,False,,,4749387264.0,0.6926,1.043,,False,True,True,True,False,False,1
+CAR,Avis Budget Group,165.2,135669360.0,41.19,157.9419,174.4435,179.9368,180.9352,-2.0027,-2.3355,False,True,False,False,False,False,,,,,,,False,False,False,False,False,False,1
+BKR,Baker Hughes,56.94,497236695.0,33.53,55.2334,62.275,59.2421,61.3554,-1.8607,-1.1736,False,True,False,False,False,False,,,,,,,False,False,False,False,False,False,1
+BRK-B,Berkshire Hathaway B,487.81,2802647558.0,52.31,490.0594,484.3725,490.1325,487.0043,3.3171,3.1045,True,False,False,False,False,False,,,61228249088.0,0.1767,2.876,0.1313,False,True,True,True,True,False,1
+BKNG,Booking Holdings,177.05,1445304790.0,58.99,189.2566,169.6274,172.5921,169.4285,2.5156,1.1955,True,False,False,False,False,False,,,7075125248.0,,1.057,,False,True,False,True,False,False,1
+BMY,Bristol-Myers Squibb,55.39,765171943.0,46.14,53.0951,58.1896,55.4025,55.9351,-0.5784,-0.5383,False,True,False,False,False,False,,,9851750400.0,2.3097,1.42,,False,True,False,True,False,False,1
+XLP,Consumer Staples Select Sector ETF,83.94,1086851475.0,49.93,81.0737,84.2622,83.9668,83.9829,0.0279,0.0868,False,True,False,True,False,False,,,,,,,False,False,False,False,False,False,1
+CAAP,Corp America Airports,25.86,5494508.0,47.91,24.5471,25.9165,26.4298,26.2519,0.2534,0.3437,False,True,False,False,False,False,,,606650368.0,0.5814,1.402,,False,True,True,True,False,False,1
+DHR,Danaher Corp,193.21,785707985.0,66.44,203.4851,186.7124,183.7541,181.2606,2.0482,1.1143,True,False,False,False,False,False,,,4568500224.0,0.3717,1.868,,False,True,True,True,False,False,1
+DANOY,Danone,16.05,7147775.0,67.74,16.6493,15.6371,15.5053,15.2339,0.2214,0.1169,True,False,False,False,False,False,,,2491249920.0,0.8909,0.905,,False,True,True,False,False,False,1
+EONGY,E.ON SE,20.4,8227228.0,41.17,20.25,21.7201,20.5418,20.8367,-0.2919,-0.2263,False,True,False,False,False,False,,,-3405900032.0,1.5002,0.95,,False,False,False,False,False,False,1
+FNMA,Fannie Mae,7.28,32017438.0,56.98,9.1028,7.0485,6.6775,6.7538,-0.1447,-0.234,True,False,False,False,False,False,,,,37.0366,130.345,,False,False,False,True,False,False,1
+FMCC,Freddie Mac,6.52,16099690.0,56.92,8.3482,6.271,6.0847,6.1067,-0.0774,-0.1558,True,False,False,False,False,False,,,,46.1329,96.523,,False,False,False,True,False,False,1
+GSK,GSK PLC,51.89,204614127.0,52.07,49.9505,53.8583,51.5687,51.4742,0.0193,-0.0492,False,True,False,False,False,False,,,3019249920.0,1.097,0.792,,False,True,False,False,False,False,1
+HD,Home Depot,345.0,1707884058.0,64.87,354.3372,334.9153,332.6579,325.6279,5.8745,3.367,True,False,False,False,False,False,,,10128249856.0,4.5936,1.045,,False,True,False,True,False,False,1
+IBM,IBM,258.27,3394786197.0,47.03,272.2787,249.9733,263.3688,265.1506,0.9792,4.8698,True,False,False,False,False,False,,,13080750080.0,2.1117,0.796,,False,True,False,False,False,False,1
+PG,Procter & Gamble,148.5,1375722441.0,52.2,148.0724,148.9946,149.5615,147.9391,1.6129,1.3951,False,True,False,False,False,False,,,12733750272.0,0.6765,0.732,,False,True,True,False,False,False,1
+RTX,RTX Corporation,186.59,1023690089.0,55.63,182.3855,189.4239,184.955,182.6814,1.9847,1.4041,False,True,False,False,False,False,,,7233375232.0,0.5723,1.024,,False,True,True,True,False,False,1
+TRIP,Tripadvisor Inc,12.8,57355099.0,62.81,13.1516,10.8385,12.5559,12.0586,0.5266,0.4887,True,False,False,False,False,False,,,181087504.0,1.9979,1.249,,False,True,False,True,False,False,1
+VZ,Verizon Communications,46.07,1210641791.0,46.35,44.0989,48.117,46.1572,46.5086,-0.3652,-0.3201,False,True,False,False,False,False,,,19608500224.0,1.9204,0.64,,False,True,False,False,False,False,1
+TX,Ternium SA,45.37,23968024.0,43.97,40.343,43.1755,46.5598,46.9804,0.0288,0.6742,False,False,False,False,False,False,0.8061,56.2848,-557738496.0,0.1824,2.634,-0.0022,True,False,True,True,False,False,0
+HOG,Harley-Davidson Inc,25.46,57356754.0,55.39,23.0208,22.2414,25.3684,24.999,0.4486,0.4718,False,False,False,False,False,False,0.8928,28.5156,168418624.0,0.7143,1.914,-0.0089,True,True,True,True,False,False,0
+NMR,Nomura Holdings,8.79,13192895.0,56.94,8.061,8.2875,8.7651,8.6149,0.1725,0.1819,False,False,False,False,False,False,1.2045,7.2975,,9.842,1.541,-0.0015,False,False,False,True,False,False,0
+GM,General Motors,78.53,747406668.0,45.41,74.5632,77.7074,79.9251,80.2378,0.0737,0.6475,False,False,False,False,False,False,1.2172,64.5194,22466625536.0,1.9905,1.152,-0.03,False,True,False,True,False,False,0
+BCS,Barclays PLC,27.3,131229037.0,68.01,23.1014,23.604,26.4113,25.5284,0.8673,0.6839,False,False,False,False,False,False,1.2263,22.2627,,,,0.0937,False,False,False,False,True,False,0
+AEG,Aegon Ltd,8.36,44019657.0,53.18,7.7226,7.7486,8.4089,8.3243,0.1001,0.1022,False,False,False,False,False,False,1.5549,5.3765,-204500000.0,0.5694,7.997,0.0324,False,False,True,True,True,False,0
+ING,ING Groep,31.02,140289151.0,55.12,27.5554,28.629,31.0497,30.6271,0.4518,0.394,False,False,False,False,False,False,1.5899,19.5112,,,,-0.0162,False,False,False,False,False,False,0
+LYG,Lloyds Banking Group,5.75,154796721.0,61.97,5.1776,5.366,5.6096,5.5088,0.0904,0.0582,False,False,False,False,False,False,1.5961,3.6024,,,,0.0412,False,False,False,False,True,False,0
+C,Citigroup Inc,144.98,1821936102.0,70.17,113.8573,122.5943,142.5484,137.8667,4.8521,4.2655,False,False,False,False,False,True,1.6241,89.2652,,,,0.0114,False,False,False,False,True,False,0
+MFG,Mizuho Financial Group,9.59,39699718.0,52.94,7.9452,8.801,9.7449,9.5644,0.2302,0.2656,False,False,False,False,False,False,1.795,5.3427,,,,0.0831,False,False,False,False,True,False,0
+MUFG,Mitsubishi UFJ Financial,20.02,65665940.0,54.46,17.1783,18.4535,20.2081,19.8959,0.4028,0.4681,False,False,False,False,False,False,1.7974,11.1386,,,,0.0897,False,False,False,False,True,False,0
+SAN,Banco Santander SA,13.38,108894227.0,61.69,11.4732,12.0245,13.271,12.8988,0.367,0.2949,False,False,False,False,False,False,1.9763,6.7702,,,,0.0822,False,False,False,False,True,False,0
+WFC,Wells Fargo,84.74,1279963640.0,63.21,83.9272,80.4158,83.6096,81.9654,1.6429,1.4202,False,False,False,False,False,False,2.1659,39.1252,,,,0.0443,False,False,False,False,True,False,0
+BAC,Bank of America,58.19,2147541403.0,75.19,52.0728,51.6008,56.8743,55.2334,1.6194,1.3148,False,False,False,False,False,True,2.1917,26.5497,,,,0.032,False,False,False,False,True,False,0
+URBN,Urban Outfitters,71.37,83390527.0,46.58,70.2941,69.45,73.0677,73.1111,0.3308,0.8449,False,False,False,True,False,False,2.3402,30.497,4627125.0,0.4614,1.476,0.1391,False,True,True,True,True,False,0
+TRV,Travelers Companies,318.29,616012676.0,67.41,289.2546,300.6746,311.9208,306.3206,4.774,2.6608,False,False,False,False,False,False,2.4424,130.3179,13304375296.0,0.2898,0.335,0.2244,False,True,True,False,True,False,0
+USB,US Bancorp,61.21,561662959.0,70.21,52.3082,55.1181,59.0978,57.573,1.4115,0.9946,False,False,False,False,False,True,2.6026,23.5184,,,,0.2125,False,False,False,False,True,False,0
+PSX,Phillips 66,171.76,450273401.0,46.77,151.2723,169.814,171.4721,173.7749,-1.5977,-0.3771,False,False,False,False,False,False,2.6319,65.2598,-1134499968.0,0.9139,1.132,0.0815,False,False,True,True,True,False,0
+FSLR,First Solar Inc,248.64,776845719.0,45.1,234.2884,224.922,257.3975,260.9952,0.5431,6.1653,False,False,False,False,False,False,2.728,91.1426,1147664768.0,0.0594,2.557,0.1978,False,True,True,True,True,False,0
+AAP,Advance Auto Parts,59.2,103150228.0,53.64,52.5174,55.307,58.1659,57.9014,0.517,0.8161,False,False,False,False,False,False,2.9449,20.1027,-228000000.0,2.5531,1.778,0.0274,False,False,False,True,True,False,0
+MRNA,Moderna Inc,59.75,428890962.0,62.61,39.9304,51.0095,57.9962,54.3551,3.2155,2.0583,False,False,False,False,False,False,3.2384,18.4507,-20000000.0,0.1752,2.409,-0.2087,False,False,True,True,False,False,0
+PCAR,PACCAR Inc,121.68,399022712.0,58.55,111.6983,118.7426,118.6779,117.3166,1.2161,0.8882,False,False,False,False,False,False,3.2412,37.542,1481787520.0,0.7616,5.558,0.1004,False,True,True,True,True,False,0
+JPM,JPMorgan Chase,335.12,3058776068.0,67.66,305.9902,303.9266,328.5449,320.1213,7.9477,5.8988,False,False,False,False,False,False,3.4041,98.4472,,,,0.0684,False,False,False,False,True,False,0
+CCL,Carnival Corp,28.46,762824930.0,51.3,28.2266,27.5117,29.0981,28.4588,0.7257,0.7613,False,False,False,False,False,False,3.5132,8.1008,,2.0156,0.334,0.4019,False,False,False,False,True,False,0
+GS,Goldman Sachs,1065.09,2481909799.0,56.0,879.0864,929.0668,1076.7931,1052.0647,30.2325,32.8176,False,False,False,False,False,False,3.6263,293.7129,,6.786,1.5,0.0097,False,False,False,True,True,False,0
+SWKS,Skyworks Solutions,69.94,404863987.0,46.03,65.6129,64.1745,72.5297,73.033,0.1744,1.0174,False,False,False,False,False,False,3.7899,18.4545,687837504.0,0.2063,2.376,-0.1497,False,True,True,True,False,False,0
+NUE,Nucor Corp,248.89,461756826.0,53.62,178.4023,206.75,247.9918,247.2352,3.4257,6.4993,False,False,False,False,False,False,4.0204,61.907,-384100000.0,0.316,2.901,0.0689,False,False,True,True,True,False,0
+TGT,Target Corp,139.57,594707761.0,64.6,107.4606,123.4292,134.1874,130.7464,3.1419,2.0756,False,False,False,False,False,False,4.0235,34.6889,3141250048.0,1.1755,0.932,0.1068,False,True,False,False,True,False,0
+BHP,BHP Group,81.16,270097275.0,41.02,67.8239,78.8627,84.9146,85.9406,-0.2703,0.8865,False,False,False,True,False,False,4.2645,19.0315,8137124864.0,0.5264,1.649,0.0636,False,True,True,True,True,False,0
+CX,Cemex SAB,12.38,50344372.0,47.52,11.3313,12.0642,12.4358,12.5375,-0.0645,-0.0056,False,False,False,False,False,False,4.3166,2.868,1076206208.0,0.4639,0.865,0.4894,False,True,True,False,True,False,0
+SNA,Snap-on Inc,400.95,130605995.0,65.35,358.2576,375.2533,389.5695,383.6562,5.6543,4.3084,False,False,False,False,False,False,4.5425,88.2658,1048337472.0,0.2173,3.528,0.1184,False,True,True,True,True,False,0
+FCX,Freeport-McMoRan,62.8,957435422.0,44.23,54.6236,62.597,65.6093,65.7772,0.2848,0.9629,False,False,False,True,False,False,4.7351,13.2627,1709874944.0,0.3301,2.386,0.0766,False,True,True,True,True,False,0
+XYZ,Block Inc,74.08,434001076.0,54.79,67.2639,66.0205,73.2757,72.2097,1.0323,0.7285,False,False,False,False,False,False,4.9156,15.0703,-794561728.0,0.3751,1.986,0.078,False,False,True,True,True,False,0
+RIOT,Riot Platforms,27.76,413351373.0,58.97,18.1009,19.6278,27.5793,26.6222,1.2174,1.3204,False,False,False,False,False,False,4.9333,5.627,-445848640.0,0.3663,1.078,-0.1449,False,False,True,True,False,False,0
+NOK,Nokia Corp,13.98,1812615039.0,49.03,8.3904,11.027,14.0619,14.2226,0.016,0.2255,False,False,False,False,False,False,4.9773,2.8087,1597124992.0,0.1563,1.567,-0.0387,False,True,True,True,False,False,0
+BK,Bank of New York Mellon,143.63,519562001.0,57.71,119.3183,128.3003,143.3168,141.2872,2.4318,2.5099,False,False,False,False,False,False,6.1547,22.2853,,,,0.157,False,False,False,False,True,False,0
+ADDYY,Adidas AG,101.33,4977271.0,61.98,93.1068,87.9289,99.7014,97.2662,3.0233,3.3524,False,False,False,False,False,False,7.1578,13.9471,,0.9375,1.351,0.094,False,False,True,True,True,False,0
+INTC,Intel Corp,132.87,16252159071.0,60.52,57.7127,81.7465,128.4899,121.4688,7.5515,6.5433,False,False,False,False,False,False,7.8164,16.9988,-8301250048.0,0.3603,2.312,0.2357,False,False,True,True,True,False,0
+DE,Deere & Co,630.76,833589572.0,70.29,528.1749,583.8267,596.7291,583.8175,10.6519,5.456,False,False,False,False,False,True,7.903,79.8131,1098749952.0,3.7602,2.213,0.1742,False,True,False,True,True,False,0
+HSBC,HSBC Holdings,95.06,167152521.0,56.36,79.6345,87.9753,94.2978,93.1662,1.1641,0.9594,False,False,False,False,False,False,8.0048,11.8754,,,,0.0726,False,False,False,False,True,False,0
+AXP,American Express,342.46,971334189.0,68.76,336.525,316.3943,336.1404,327.9816,7.4436,5.1626,False,False,False,False,False,False,8.0663,42.4556,,1.7785,1.574,0.0985,False,False,False,True,True,False,0
+UNP,Union Pacific Corp,267.73,772777570.0,53.78,241.606,258.2909,263.1351,264.295,-0.6518,0.0557,False,False,False,False,False,False,8.1855,32.708,4034374912.0,1.6225,0.916,0.0934,False,True,False,False,True,False,0
+FMX,Fomento Economico Mexicano,125.37,66440868.0,54.4,106.8382,116.6406,125.293,124.1787,1.464,1.6973,False,False,False,False,False,False,8.5872,14.5997,159328321536.0,0.8758,1.156,-0.3419,False,True,True,True,False,False,0
+ROKU,Roku Inc,134.73,1002423721.0,56.91,105.7885,112.6645,134.5064,131.1796,3.7214,3.5216,False,False,False,False,False,False,9.2873,14.5069,679980608.0,0.1876,2.91,0.031,False,True,True,True,True,False,0
+KOF,Coca-Cola FEMSA,105.99,14493398.0,49.04,97.4446,104.7367,106.5499,106.5252,0.2568,0.5313,False,False,False,False,False,False,9.3219,11.37,26122770432.0,0.6524,1.1,0.0552,False,True,True,True,True,False,0
+GOOGL,Alphabet Inc,343.71,13176551558.0,36.25,313.1444,339.5883,354.2801,362.061,-6.2024,-3.2542,False,False,False,False,False,False,9.4588,36.3378,27921750016.0,0.2003,1.922,0.3025,False,True,True,True,True,False,0
+TWLO,Twilio Inc,190.88,584707512.0,47.54,137.433,157.26,191.9762,195.3794,-0.4678,3.4467,False,False,False,False,False,False,10.8792,17.5455,879865344.0,0.1372,4.656,-0.0105,False,True,True,True,False,False,0
+BIIB,Biogen Inc,201.96,213217476.0,57.98,175.8728,189.064,198.7297,196.8418,2.0951,1.953,False,False,False,False,False,False,11.2779,17.9077,1930925056.0,0.3518,3.065,3.7393,False,True,True,True,True,False,0
+PSO,Pearson PLC,15.13,12710190.0,51.74,13.6971,13.9881,15.1094,15.1179,0.0449,0.1052,False,False,False,False,False,False,11.3552,1.3324,863750016.0,0.4051,1.998,-0.3686,False,True,True,True,False,False,0
+DAL,Delta Air Lines,92.11,644379922.0,73.64,67.0911,71.6879,86.4419,82.6732,3.7969,3.0623,False,False,False,False,False,True,11.9978,7.6772,3093374976.0,1.0502,0.418,,False,True,False,False,False,False,0
+QCOM,Qualcomm Inc,204.9,4832633226.0,47.78,166.7462,171.3022,210.341,212.4915,0.8945,4.6065,False,False,False,False,False,False,19.3896,10.5675,9589624832.0,0.5598,2.366,-0.3887,False,True,True,True,False,False,0
+SIEGY,Siemens AG,155.26,26641652.0,51.05,141.7573,143.141,155.7221,155.2946,0.9467,1.3898,False,False,False,False,False,False,21.6463,7.0991,-312375008.0,0.7635,1.393,-0.0886,False,False,True,True,False,False,0
+TXN,Texas Instruments,311.81,2902120719.0,54.62,211.8134,251.9698,308.9481,304.1034,6.4037,6.9038,False,False,False,False,False,False,23.5123,13.2615,1068249984.0,0.8374,4.456,-0.0471,False,True,True,True,False,False,0
+BB,BlackBerry Ltd,10.34,412958006.0,69.0,4.8077,5.646,9.1462,8.7771,0.5289,0.6407,False,False,False,False,False,False,26.7801,0.3861,43762500.0,0.3013,2.119,0.1329,False,True,True,True,True,False,0
+NVDA,Nvidia Corp,195.74,35093159898.0,39.66,190.4844,195.2359,203.3794,207.1607,-2.8886,-1.2671,False,False,False,False,False,False,28.6522,6.8316,46335873024.0,0.0655,3.441,0.8158,False,True,True,True,True,False,0
+CAT,Caterpillar Inc,1057.01,3154878055.0,69.35,681.423,822.431,984.3879,945.7803,36.923,26.3729,False,False,False,False,False,False,35.3026,29.9414,3776624896.0,2.3079,1.353,0.1375,False,True,False,True,True,False,0
+AMD,Advanced Micro Devices,532.57,15771435162.0,58.49,268.6369,337.8445,522.1967,502.0888,26.5464,29.7713,False,False,False,False,False,False,40.079,13.288,7173374976.0,0.06,2.725,0.534,False,True,True,True,True,False,0
+EA,Electronic Arts,204.73,450925603.0,67.61,199.7879,201.5839,203.5562,202.9279,0.5923,0.4362,False,False,False,False,False,False,43.462,4.7106,2219124992.0,0.2741,1.046,0.6471,False,True,True,True,True,False,0
+LRCX,Lam Research,401.82,4440160951.0,64.77,215.5661,275.018,378.4015,354.8706,25.2516,23.0926,False,False,False,False,False,False,58.1366,6.9116,4352341504.0,0.3528,2.536,0.1887,False,True,True,True,True,False,0
+LLY,Eli Lilly & Co,1127.6899,3639753712.0,60.31,972.2869,1005.9441,1116.9863,1101.3674,23.4344,30.4427,False,False,False,False,False,False,60.7143,18.5737,9156599808.0,1.3901,1.497,5.0424,False,True,False,True,True,False,0
+TSM,Taiwan Semiconductor,434.99,5936502498.0,52.73,338.252,384.4223,439.1802,430.9509,9.8246,10.1728,False,False,False,False,False,False,66.8507,6.5069,719158444032.0,0.1845,2.488,0.2637,False,True,True,True,True,False,0
+GE,GE Aerospace,371.36,1679490071.0,75.12,306.6779,312.6847,354.9651,339.3132,15.596,12.7693,False,False,False,False,False,True,74.338,4.9956,5667999744.0,1.1653,1.008,-0.1766,False,True,False,True,False,False,0
+KO,Coca-Cola Co,80.42,1532528658.0,53.17,73.3768,78.2481,80.283,80.0184,0.3794,0.4645,False,False,False,False,False,False,79.8147,1.0076,3124250112.0,1.2494,1.358,,False,True,False,True,False,False,0
+HWM,Howmet Aerospace,273.14,766096195.0,56.77,225.3827,252.6288,273.0158,266.9984,5.8979,4.6499,False,False,False,False,False,False,121.4802,2.2484,1192749952.0,0.8779,2.444,61.4286,False,True,True,True,True,False,0
+MRVL,Marvell Technology,281.26,20531586200.0,56.46,117.4451,159.3778,284.5909,266.4541,23.8916,28.1016,False,False,False,False,False,False,161.8496,1.7378,2269700096.0,0.2897,3.278,,False,True,True,True,False,False,0
+SNOW,Snowflake Inc,227.06,2431917760.0,55.23,205.7377,178.474,230.8281,224.4112,10.8988,15.6271,False,False,False,False,False,False,213.7807,1.0621,1739497728.0,1.4291,1.053,-0.7609,False,True,False,True,False,False,0
+EBAY,eBay Inc,108.0,450520021.0,48.58,93.502,99.9451,108.3455,108.75,-0.1293,0.1431,False,False,False,False,False,False,340.4471,0.3172,1200375040.0,1.6333,1.219,-0.8335,False,True,False,True,False,False,0
+MMM,3M Co,167.97,626975610.0,73.62,157.1972,153.13,162.3648,158.2453,4.0448,3.2111,False,False,False,False,False,True,,,2322374912.0,3.965,1.594,,False,True,False,True,False,False,0
+ABBV,AbbVie Inc,243.14,1409482666.0,71.53,220.0178,217.1535,230.4905,224.6194,5.6374,4.1915,False,False,False,False,False,True,,,20811624448.0,,0.796,,False,True,False,False,False,False,0
+ABEV,Ambev SA,3.14,87959412.0,48.27,2.7386,3.0495,3.1529,3.1607,-0.0013,0.0068,False,False,False,False,False,False,,,,,,,False,False,False,False,False,False,0
+AMX,America Movil,26.3,33232494.0,51.19,23.3872,25.5785,26.2423,26.2122,0.0368,0.0401,False,False,False,False,False,False,,,,,,,False,False,False,False,False,False,0
+AAL,American Airlines,17.57,1927732400.0,76.65,13.2167,12.891,16.1789,15.1427,1.0007,0.7497,False,False,False,False,False,True,,,861124992.0,,0.492,,False,True,False,False,False,False,0
+AMGN,Amgen Inc,352.82,1073520694.0,58.45,331.1727,350.6068,347.4724,344.2374,3.0944,2.5031,False,False,False,False,False,False,,,,,,,False,False,False,False,False,False,0
+ADI,Analog Devices,417.93,2198807205.0,51.68,313.0315,371.4702,418.8109,415.5316,4.7893,5.7291,False,False,False,False,False,False,,,,,,,False,False,False,False,False,False,0
+AMAT,Applied Materials,668.0,5821163592.0,72.52,326.6808,423.5371,597.7042,547.9697,50.4017,42.2346,False,False,False,False,False,True,,,,,,,False,False,False,False,False,False,0
+ARM,ARM Holdings PLC,347.71,5062056445.0,50.73,172.5169,219.441,375.719,357.0559,27.6693,35.9756,False,False,False,False,False,False,,,750499968.0,0.0593,5.996,,False,True,True,True,False,False,0
+BBVA,Banco Bilbao Vizcaya,24.53,42991010.0,62.13,21.4194,22.2016,24.177,23.5986,0.5733,0.4636,False,False,False,False,False,False,,,,,,,False,False,False,False,False,False,0
+BAYRY,Bayer AG,13.16,14569252.0,79.98,10.4386,11.366,11.2226,10.8826,0.1996,-0.0578,False,False,False,False,False,True,,,7314874880.0,1.3427,1.055,,False,True,False,True,False,False,0
+AVGO,Broadcom Inc,378.91,15188918718.0,43.28,360.4151,372.3989,388.5524,398.5733,-8.6803,-5.9299,False,False,False,False,False,False,,,27212249088.0,0.7402,2.238,,False,True,True,True,False,False,0
+CAH,Cardinal Health,234.75,527492273.0,76.2,198.3261,211.0553,226.2903,217.5755,8.3502,6.5333,False,False,False,False,False,True,,,4849999872.0,,0.907,,False,True,False,False,False,False,0
+CSCO,Cisco Systems,118.97,3095626470.0,53.61,83.2266,95.6148,120.096,118.7268,2.7683,4.1061,False,False,False,False,False,False,,,9288375296.0,0.6754,0.925,,False,True,True,False,False,False,0
+CL,Colgate-Palmolive,91.06,490326090.0,56.29,84.2267,89.2185,90.3782,89.5626,0.8036,0.617,False,False,False,False,False,False,,,3319500032.0,16.4054,1.025,,False,True,False,True,False,False,0
+CVS,CVS Health,104.66,863806650.0,72.59,80.3923,84.5854,100.9942,97.995,3.3686,3.2093,False,False,False,False,False,True,,,5201625088.0,1.0091,0.866,,False,True,False,False,False,False,0
+ETSY,Etsy Inc,77.7,220144220.0,73.81,59.9962,59.7145,74.1885,70.775,3.4743,2.8964,False,False,False,False,False,True,,,165655504.0,,1.689,,False,True,False,True,False,False,0
+PAC,Grupo Aeroportuario Pacifico,252.21,25822669.0,57.61,246.8014,249.1275,246.0279,243.0752,1.8281,-0.1292,False,False,False,False,False,False,,,1832582400.0,2.2633,1.469,,False,True,False,True,False,False,0
+XLV,Health Care Select Sector ETF,155.63,1730607172.0,63.62,148.996,149.7027,152.612,151.3825,1.3517,1.2981,False,False,False,False,False,False,,,,,,,False,False,False,False,False,False,0
+HON,Honeywell International,231.24,1176343558.0,57.36,212.893,227.3282,226.4206,224.4071,1.71,0.9394,False,False,False,False,False,False,,,2936875008.0,2.5739,1.385,,False,True,False,True,False,False,0
+HPQ,HP Inc,22.92,568382257.0,44.64,22.4419,21.0407,23.7081,23.8803,0.1309,0.5331,False,False,False,False,False,False,,,3450874880.0,,0.794,,False,True,False,False,False,False,0
+XLI,Industrial Select Sector ETF,184.12,1476414380.0,64.62,163.2186,172.0124,179.8116,177.322,2.3725,1.7455,False,False,False,False,False,False,,,,,,,False,False,False,False,False,False,0
+IFF,Intl Flavors & Fragrances,75.08,156557705.0,49.65,69.5494,74.6566,75.6757,75.3768,0.4101,0.5051,False,False,False,False,False,False,,,3702625024.0,0.457,1.492,,False,True,True,True,False,False,0
+RSP,Invesco S&P 500 Equal Weight ETF,211.75,2127345524.0,59.75,195.674,201.873,210.2319,209.0551,1.5136,1.6962,False,False,False,False,False,False,,,,,,,False,False,False,False,False,False,0
+SPY,SPDR S&P 500 ETF Trust,734.3,45217168740.0,47.43,687.7578,703.4695,738.7429,739.4794,1.249,3.5304,False,False,False,False,False,False,,,,,,,False,False,False,False,False,False,0
+IEUR,iShares Core MSCI Europe ETF,74.48,90885363.0,53.31,71.1967,73.0357,74.2961,74.1038,0.2601,0.3122,False,False,False,False,False,False,,,,,,,False,False,False,False,False,False,0
+IBB,iShares NASDAQ Biotechnology ETF,183.67,260531117.0,70.16,165.7903,170.1605,176.8553,173.4289,2.7948,1.3029,False,False,False,False,False,True,,,,,,,False,False,False,False,False,False,0
+IVW,iShares S&P 500 Growth ETF,133.46,431392917.0,45.32,124.1843,126.5463,135.0998,135.5772,0.0387,0.6813,False,False,False,False,False,False,,,,,,,False,False,False,False,False,False,0
+IVE,iShares S&P 500 Value ETF,226.09,348632734.0,51.61,214.2392,219.9282,226.4919,226.1092,0.7172,1.0257,False,False,False,False,False,False,,,,,,,False,False,False,False,False,False,0
+JNJ,Johnson & Johnson,244.88,2003041433.0,65.13,215.815,235.334,237.4789,234.4058,2.7692,1.8662,False,False,False,False,False,False,,,12511375360.0,0.6773,1.025,,False,True,True,True,False,False,0
+JCI,Johnson Controls,145.49,654781630.0,53.97,126.0862,139.1281,144.1858,143.1379,1.1984,1.2286,False,False,False,False,False,False,,,2870374912.0,0.7032,1.036,,False,True,True,True,False,False,0
+KMB,Kimberly-Clark,108.1,497328969.0,67.85,103.8305,100.378,103.8416,101.3502,2.2875,1.5888,False,False,False,False,False,False,,,1054625024.0,3.7126,0.766,,False,True,False,False,False,False,0
+XLB,Materials Select Sector ETF,51.84,657401159.0,53.64,47.9559,51.0288,51.5301,51.3816,0.155,0.1434,False,False,False,False,False,False,,,,,,,False,False,False,False,False,False,0
+MDLZ,Mondelez International,61.2,563246635.0,49.36,58.303,59.5627,61.2785,61.413,0.0237,0.2271,False,False,False,False,False,False,,,2847500032.0,0.8379,0.542,,False,True,True,False,False,False,0
+NVS,Novartis AG,155.12,336895202.0,59.95,140.1424,151.7819,151.767,150.5058,1.0492,0.544,False,False,False,False,False,False,,,12024750080.0,1.2073,0.848,,False,True,False,False,False,False,0
+PM,Philip Morris International,178.93,855970281.0,50.51,165.097,173.7428,178.6431,178.91,0.2254,0.7906,False,False,False,False,False,False,,,8575249920.0,,0.976,,False,True,False,False,False,False,0
+PBI,Pitney Bowes,17.5,49181798.0,65.01,11.8278,13.548,17.2581,16.855,0.5206,0.5792,False,False,False,False,False,False,,,254778624.0,,0.621,,False,True,False,False,False,False,0
+XLRE,Real Estate Select Sector ETF,44.59,241591087.0,52.74,41.9082,43.3343,44.4852,44.4169,0.1185,0.162,False,False,False,False,False,False,,,,,,,False,False,False,False,False,False,0
+SBUX,Starbucks Corp,103.16,759544207.0,57.64,91.7058,98.6057,101.4338,100.7927,0.3906,-0.1199,False,False,False,False,False,False,,,-1304087552.0,,0.922,,False,False,False,False,False,False,0
+SYY,Sysco Corp,80.85,268452025.0,66.45,77.6039,79.2084,79.3226,77.9817,1.3146,1.0807,False,False,False,False,False,False,,,1868375040.0,6.7044,1.329,,False,True,False,True,False,False,0
+XLK,Technology Select Sector ETF,184.57,2851880993.0,51.81,150.1942,158.8411,186.0355,184.5879,2.7911,4.037,False,False,False,False,False,False,,,,,,,False,False,False,False,False,False,0
+UNH,UnitedHealth Group,415.53,2849065184.0,66.62,332.6867,337.4188,406.6258,398.7531,9.7601,10.2977,False,False,False,False,False,False,,,17687500800.0,0.7398,0.798,,False,True,True,False,False,False,0
+VEA,Vanguard FTSE Developed Markets ETF,71.16,798732070.0,53.02,64.5148,68.1521,71.0781,70.793,0.4144,0.5134,False,False,False,False,False,False,,,,,,,False,False,False,False,False,False,0
+V,Visa Inc,330.52,2796951616.0,56.21,328.1536,316.8653,328.253,325.9902,2.1998,1.5816,False,False,False,False,False,False,,,20839749632.0,0.6723,1.088,,False,True,True,True,False,False,0
+XRX,Xerox Holdings,3.22,17318163.0,55.56,2.529,2.2255,3.1919,3.1299,0.1268,0.193,False,False,False,False,False,False,,,550374976.0,8.4045,1.181,,False,True,False,True,False,False,0

@@ -7,6 +7,10 @@ C:\Users\feder\anaconda3\python.exe
 
 ## How to run scripts
 ```bash
+# One-shot pipeline: refresh all data + Kronos forecast + weekly screen
+/c/Users/feder/anaconda3/python.exe scripts/refresh_all.py
+/c/Users/feder/anaconda3/python.exe scripts/refresh_all.py --skip-kronos   # skip the heavy forecast
+
 # Update OHLCV market data (all CEDEARs or a single ticker)
 /c/Users/feder/anaconda3/python.exe scripts/fetch_data.py
 /c/Users/feder/anaconda3/python.exe scripts/fetch_data.py --ticker AAPL

@@ -30,6 +30,26 @@ files, or generate them in your own deployment.
 
 ## Scripts
 
+### 0. One-shot pipeline — refresh everything
+
+Runs the whole flow in order: refresh OHLCV for the full universe + portfolio,
+refresh fundamentals, then run the Kronos forecast and the weekly screen against
+that fresh data (each source is refreshed once; the analyses run with `--no-fetch`).
+
+```bash
+/c/Users/feder/anaconda3/python.exe scripts/refresh_all.py
+/c/Users/feder/anaconda3/python.exe scripts/refresh_all.py --no-fetch            # caches only
+/c/Users/feder/anaconda3/python.exe scripts/refresh_all.py --skip-fundamentals   # faster, no value screen
+/c/Users/feder/anaconda3/python.exe scripts/refresh_all.py --skip-kronos
+/c/Users/feder/anaconda3/python.exe scripts/refresh_all.py --kronos-model Kronos-base --kronos-samples 50
+```
+
+Outputs: `data/portfolio/kronos_forecast_YYYY-MM-DD.csv` and
+`data/portfolio/weekly_screen_YYYY-MM-DD.csv`. (Requires the Kronos deps —
+`requirements-kronos.txt` — unless you pass `--skip-kronos`.)
+
+---
+
 ### 1. Rank all BYMA CEDEARs (momentum + RSI)
 
 Fetches USD price history for all ~290 BYMA CEDEARs from US exchanges and ranks them by a composite score: momentum (3M/6M), RSI zone, Sharpe ratio, and moving average structure.
@@ -57,7 +77,7 @@ Runs the Kronos-small foundation model to forecast the next 21 trading days for 
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--model` | `Kronos-small` | `Kronos-mini` / `Kronos-small` / `Kronos-base` |
+| `--model` | `Kronos-base` | `Kronos-mini` / `Kronos-small` / `Kronos-base` |
 | `--pred-days` | `21` | Trading days to forecast |
 | `--samples` | `20` | Monte Carlo sample paths (more = smoother) |
 | `--no-fetch` | off | Skip download, use cached CSVs |
