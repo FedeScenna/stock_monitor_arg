@@ -21,6 +21,40 @@ MIN_DOLLAR_VOL = 0     # liquidity floor: drop names below this 20-day avg $ vol
 SCREEN_MIN_ROWS = 50   # minimum OHLCV rows required to screen a ticker
 
 # ---------------------------------------------------------------------------
+# Murphy technical-analysis strategies (src/screening/murphy.py,
+# scripts/technical_signals.py + app.py "Technical Signals").
+# Indicator toolkit from John J. Murphy, "Technical Analysis of the Financial
+# Markets": directional movement (ADX/DMI), stochastics, Williams %R, ROC,
+# On-Balance Volume, ATR, Donchian breakout.
+# ---------------------------------------------------------------------------
+ATR_LEN            = 14    # Wilder Average True Range length
+ADX_LEN            = 14    # Wilder directional-movement / ADX length
+ADX_TREND_MIN      = 25    # ADX >= this => trending market (DI cross is tradable)
+STOCH_K            = 14    # stochastic %K lookback
+STOCH_D            = 3     # stochastic %D smoothing
+STOCH_SMOOTH       = 3     # slow-%K smoothing
+STOCH_OVERSOLD     = 20    # stochastic oversold threshold
+STOCH_OVERBOUGHT   = 80    # stochastic overbought threshold
+WILLIAMS_LEN       = 14    # Williams %R lookback
+WILLIAMS_OVERSOLD  = -80   # %R <= this => oversold
+WILLIAMS_OVERBOUGHT = -20  # %R >= this => overbought
+ROC_LEN            = 12    # rate-of-change / momentum lookback
+OBV_SLOPE_LEN      = 20    # OBV slope window (confirm/deny the price trend)
+DONCHIAN_LEN       = 252   # Donchian / 52-week breakout channel (~1 year)
+
+# ---------------------------------------------------------------------------
+# Multi-model forecasting (src/forecasting/, scripts/forecast_benchmark.py,
+# scripts/ensemble_forecast.py). Deep time-series models (Nixtla N-HiTS /
+# PatchTST / TFT) are benchmarked against Kronos, then blended into an ensemble.
+# ---------------------------------------------------------------------------
+FORECAST_HORIZON   = 21    # trading days to forecast (~1 month), matches Kronos
+FORECAST_INPUT     = 252   # context window (lookback) fed to the neural models
+FORECAST_MAX_STEPS = 200   # training steps per neural model fit (speed vs accuracy)
+FORECAST_QUANTILES = [0.1, 0.5, 0.9]   # probabilistic band (q50 = point forecast)
+NEURAL_MODELS      = ["NHITS", "PatchTST", "TFT"]   # Nixtla models in the ensemble
+ENSEMBLE_MIN_ROWS  = 400   # minimum OHLCV rows to train the neural forecasters
+
+# ---------------------------------------------------------------------------
 # Complete CEDEAR universe traded on BYMA
 # Source: comafi.com.ar/custodiaglobal/Programas-CEDEARs-2483.note.aspx
 # Keys are yfinance-compatible tickers (may differ from BYMA ticker).

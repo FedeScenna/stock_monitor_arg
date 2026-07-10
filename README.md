@@ -1,6 +1,11 @@
 # spy_model
 
-Argentine CEDEAR portfolio analysis toolkit using the [Kronos](https://github.com/shiyu-coder/Kronos) foundation model for OHLCV price forecasting, combined with momentum/RSI signals and a Streamlit dashboard.
+Argentine CEDEAR portfolio analysis toolkit. Forecasts OHLCV prices with the
+[Kronos](https://github.com/shiyu-coder/Kronos) foundation model **and** Nixtla
+deep time-series models (N-HiTS / PatchTST / TFT) — benchmarked head-to-head and
+blended into an ensemble — alongside a full technical-analysis signal engine
+(John Murphy's toolkit) and value/momentum screens, all surfaced in a Streamlit
+dashboard.
 
 ## Requirements
 
@@ -32,21 +37,27 @@ files, or generate them in your own deployment.
 
 ### 0. One-shot pipeline — refresh everything
 
-Runs the whole flow in order: refresh OHLCV for the full universe + portfolio,
-refresh fundamentals, then run the Kronos forecast and the weekly screen against
-that fresh data (each source is refreshed once; the analyses run with `--no-fetch`).
+Runs the whole flow in order (each source refreshed once; analyses run `--no-fetch`):
+
+1. **OHLCV refresh** — full CEDEAR universe + portfolio
+2. **Fundamentals** — tangible book / FCF / debt for the value screen
+3. **Kronos forecast** — 21-day price forecast
+4. **Weekly screen** — value + technical
+5. **Technical signals** — Murphy TA weight-of-evidence
+6. **Ensemble forecast** — Kronos + Nixtla deep models *(opt-in: `--with-ensemble`)*
 
 ```bash
 /c/Users/feder/anaconda3/python.exe scripts/refresh_all.py
 /c/Users/feder/anaconda3/python.exe scripts/refresh_all.py --no-fetch            # caches only
 /c/Users/feder/anaconda3/python.exe scripts/refresh_all.py --skip-fundamentals   # faster, no value screen
 /c/Users/feder/anaconda3/python.exe scripts/refresh_all.py --skip-kronos
+/c/Users/feder/anaconda3/python.exe scripts/refresh_all.py --with-ensemble       # add the multi-model ensemble
 /c/Users/feder/anaconda3/python.exe scripts/refresh_all.py --kronos-model Kronos-base --kronos-samples 50
 ```
 
-Outputs: `data/portfolio/kronos_forecast_YYYY-MM-DD.csv` and
-`data/portfolio/weekly_screen_YYYY-MM-DD.csv`. (Requires the Kronos deps —
-`requirements-kronos.txt` — unless you pass `--skip-kronos`.)
+Outputs: `data/portfolio/{kronos_forecast,weekly_screen,technical_signals}_YYYY-MM-DD.csv`
+(plus `ensemble_forecast_YYYY-MM-DD.csv` with `--with-ensemble`). Requires the Kronos
+deps (`requirements-kronos.txt`) unless you pass `--skip-kronos`.
 
 ---
 
@@ -170,11 +181,68 @@ columns per screen + metrics). Fundamentals are cached weekly in
 
 ---
 
-### 6. Streamlit dashboard
+### 6. Murphy technical-analysis signals
 
-Interactive chart viewer (candlesticks), portfolio overview, Kronos forecasts, and the
-**Weekly Screen** page — tabs for each screen above plus a confluence master table, a
-liquidity slider, and CSV download.
+Scores each name with the classic indicator toolkit from John J. Murphy's *Technical
+Analysis of the Financial Markets*, combined into a net weight-of-evidence rating
+(STRONG BUY / BUY / HOLD / SELL / STRONG SELL). Ten rules each vote +1 / −1 / 0, split
+into two families:
+
+| Family | Rules |
+|--------|-------|
+| **Trend-following** | 50/200 Golden/Death cross · MA alignment · ADX / +DI / −DI (Wilder) · MACD · On-Balance Volume · Donchian 52-week breakout |
+| **Oscillators** | RSI · Slow Stochastic · Williams %R · Rate of Change |
+
+The DI-cross vote is gated on **ADX ≥ 25** (Murphy: trend tools only work in trending
+markets). Wilder ATR is also computed for volatility-scaled stops.
+
+```bash
+/c/Users/feder/anaconda3/python.exe scripts/technical_signals.py               # full universe
+/c/Users/feder/anaconda3/python.exe scripts/technical_signals.py --no-fetch     # use cached OHLCV
+/c/Users/feder/anaconda3/python.exe scripts/technical_signals.py --portfolio    # holdings only
+```
+
+Output: `data/portfolio/technical_signals_YYYY-MM-DD.csv` (rating, `trend_score`,
+`osc_score`, `murphy_score`, per-rule votes + indicator readings).
+
+---
+
+### 7. Multi-model forecast benchmark + ensemble
+
+Two complementary forecasters live behind a shared `Forecaster` interface
+(`src/forecasting/base.py`) so they can be scored head-to-head and blended:
+
+- **Kronos** — pretrained autoregressive Transformer (zero-shot, no per-ticker training).
+- **Nixtla deep models** — N-HiTS / PatchTST / TFT via `neuralforecast`, trained per
+  ticker on GPU with a quantile (MQLoss) band.
+- **Ensemble** — inverse-error blend weighted by the latest walk-forward benchmark.
+
+```bash
+# Walk-forward benchmark: Kronos vs deep models, strictly out-of-sample
+/c/Users/feder/anaconda3/python.exe scripts/forecast_benchmark.py
+/c/Users/feder/anaconda3/python.exe scripts/forecast_benchmark.py --tickers AAPL NVDA --no-kronos
+
+# Blended 21-day ensemble forecast (weights from the benchmark)
+/c/Users/feder/anaconda3/python.exe scripts/ensemble_forecast.py                # portfolio
+/c/Users/feder/anaconda3/python.exe scripts/ensemble_forecast.py --universe     # all CEDEARs (slow)
+```
+
+Outputs: `data/portfolio/forecast_benchmark_YYYY-MM-DD.csv` (RMSE / MAE / MAPE /
+directional accuracy per model) and `ensemble_forecast_YYYY-MM-DD.csv` (per-model +
+blended paths). Deep models need `requirements-kronos.txt` — which pins
+`coreforecast==0.0.15` (newer Windows wheels segfault on import).
+
+---
+
+### 8. Streamlit dashboard
+
+Interactive chart viewer (candlesticks), portfolio overview, Kronos forecasts, plus:
+
+- **Weekly Screen** — tabs per screen, confluence master table, liquidity slider, CSV download.
+- **Technical Signals** — Murphy rating cards, colour-coded per-rule vote table, and a
+  3-panel indicator chart (price+SMA+Donchian / ADX+DI / RSI+Stochastic).
+- **Ensemble Forecast** — per-model upside table + blended forecast paths with a band.
+- **Backtest Results** — model leaderboard, MAPE / directional-accuracy bars, per-ticker heatmap.
 
 ```bash
 /c/Users/feder/anaconda3/python.exe -m streamlit run app.py
@@ -198,14 +266,24 @@ spy_model/
 │   ├── analyze_cedears.py       # Momentum/RSI ranking for all BYMA CEDEARs
 │   ├── cedear_full_screen.py    # Full universe screen + buy recommendations
 │   ├── weekly_screen.py         # Weekly value + technical screen (tangible value, MAs, MACD, RSI)
+│   ├── technical_signals.py     # Murphy TA signals (ADX/DMI, Stochastic, %R, OBV, Donchian…)
 │   ├── kronos_forecast.py       # 21-day Kronos forecast for portfolio
-│   └── kronos_backtest.py       # Walk-forward backtest (RMSE/MAE per ticker)
+│   ├── kronos_backtest.py       # Walk-forward backtest (RMSE/MAE per ticker)
+│   ├── forecast_benchmark.py    # Kronos vs Nixtla deep models, walk-forward comparison
+│   ├── ensemble_forecast.py     # Blended multi-model 21-day forecast
+│   └── refresh_all.py           # One-shot pipeline (data + forecasts + screens + signals)
 ├── src/
 │   ├── data/
 │   │   ├── fetcher.py           # DataFetcher: incremental OHLCV CSV download
 │   │   └── fundamentals.py      # FundamentalsFetcher: tangible book / FCF / debt (yfinance)
-│   └── screening/
-│       └── screens.py           # Shared indicators + tangible-value / technical screen logic
+│   ├── screening/
+│   │   ├── screens.py           # Shared indicators + tangible-value / technical screen logic
+│   │   └── murphy.py            # Murphy TA toolkit + weight-of-evidence signal score
+│   └── forecasting/
+│       ├── base.py              # Forecaster ABC + ForecastResult (shared interface)
+│       ├── neural.py            # NeuralForecaster: Nixtla N-HiTS / PatchTST / TFT
+│       ├── kronos_model.py      # KronosForecaster wrapped in the same interface
+│       └── ensemble.py          # Inverse-error blend; weights from the benchmark
 ├── data/
 │   ├── cedears/                 # OHLCV CSVs — one file per ticker (~290 tickers)
 │   ├── fundamentals/            # Weekly fundamentals snapshots (tangible book, FCF, debt)

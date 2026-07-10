@@ -2,14 +2,20 @@
 # Brokerage account statements (ResumenDeCuenta_*.pdf)
 *.pdf
 
+# --- Run logs (regenerable scratch output) ---
+*.log
+
 # --- Data: regenerable via scripts/ (fetch_data.py, weekly_screen.py, kronos_*.py) ---
-# Ignore the bulk data, but keep the small weekly-screen + Kronos-forecast outputs
-# so the deployed app can display them.
+# Ignore the bulk data, but keep the small analysis outputs so the deployed app
+# can display them.
 /data/*
 !/data/portfolio
 /data/portfolio/*
 !/data/portfolio/weekly_screen_*.csv
 !/data/portfolio/kronos_forecast_*.csv
+!/data/portfolio/ensemble_forecast_*.csv
+!/data/portfolio/forecast_benchmark_*.csv
+!/data/portfolio/technical_signals_*.csv
 
 # --- Python ---
 __pycache__/

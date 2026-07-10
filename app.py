@@ -16,6 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from config.settings import DATA_DIR, PORTFOLIO_DIR, TICKERS, RSI_BUY, RSI_SELL
 from src.screening.screens import compute_indicators
+from src.screening.murphy import TREND_SIGNALS, OSC_SIGNALS
 
 ALL_TICKERS = dict(sorted(TICKERS.items()))
 
@@ -57,7 +58,8 @@ def slice_by_range(df: pd.DataFrame, time_range: str) -> pd.DataFrame:
 
 page = st.sidebar.radio(
     "Navigation",
-    ["Stock Charts", "Weekly Screen", "Portfolio Overview", "Kronos Forecast"],
+    ["Stock Charts", "Weekly Screen", "Technical Signals", "Portfolio Overview",
+     "Kronos Forecast", "Ensemble Forecast", "Backtest Results"],
 )
 
 if page == "Stock Charts":
@@ -73,6 +75,26 @@ if page == "Kronos Forecast":
             forecast_files,
             index=len(forecast_files) - 1,
             format_func=lambda p: p.stem.replace("kronos_forecast_", ""),
+        )
+
+if page == "Ensemble Forecast":
+    ensemble_files = sorted(PORTFOLIO_DIR.glob("ensemble_forecast_*.csv"))
+    if ensemble_files:
+        selected_ens_file = st.sidebar.selectbox(
+            "Forecast date",
+            ensemble_files,
+            index=len(ensemble_files) - 1,
+            format_func=lambda p: p.stem.replace("ensemble_forecast_", ""),
+        )
+
+if page == "Backtest Results":
+    bench_files = sorted(PORTFOLIO_DIR.glob("forecast_benchmark_*.csv"))
+    if bench_files:
+        selected_bench_file = st.sidebar.selectbox(
+            "Benchmark run",
+            bench_files,
+            index=len(bench_files) - 1,
+            format_func=lambda p: p.stem.replace("forecast_benchmark_", ""),
         )
 
 # ---------------------------------------------------------------------------
@@ -609,3 +631,424 @@ elif page == "Weekly Screen":
                 "RSI": sub["rsi"].map(lambda v: f"{v:.0f}" if pd.notna(v) else "—"),
             })
             st.dataframe(show, use_container_width=True, hide_index=True)
+
+# ---------------------------------------------------------------------------
+# Page 5 — Ensemble Forecast (Kronos + Nixtla deep models)
+# ---------------------------------------------------------------------------
+
+elif page == "Ensemble Forecast":
+    st.title("Ensemble Price Forecast")
+    st.caption("Blend of the Kronos foundation model and the Nixtla deep models "
+               "(N-HiTS, PatchTST, TFT), weighted by walk-forward backtest accuracy. "
+               "The shaded band is the ensemble's quantile range (model disagreement + uncertainty).")
+
+    PORTFOLIO_DIR.mkdir(parents=True, exist_ok=True)
+    ensemble_files = sorted(PORTFOLIO_DIR.glob("ensemble_forecast_*.csv"))
+    if not ensemble_files:
+        st.info(
+            "No ensemble forecast found. Run `scripts/ensemble_forecast.py` "
+            "(or `scripts/refresh_all.py --with-ensemble`) to generate one.\n\n"
+            f"Expected location: `{PORTFOLIO_DIR}/ensemble_forecast_YYYY-MM-DD.csv`"
+        )
+        st.stop()
+
+    df_e = pd.read_csv(selected_ens_file, parse_dates=["forecast_date"])
+    forecast_date = df_e["forecast_date"].iloc[0].date()
+
+    # --- Summary: final-day upside per ticker, per model (ensemble first) ---
+    last_day = df_e.groupby(["ticker", "model"])["pred_day"].transform("max")
+    finals = df_e[df_e["pred_day"] == last_day]
+    pivot = finals.pivot_table(index="ticker", columns="model",
+                               values="upside_pct", aggfunc="first")
+    name_map = df_e.groupby("ticker")["name"].first()
+    last_map = df_e.groupby("ticker")["last_close"].first()
+    pivot = pivot.reset_index()
+    pivot.insert(1, "name", pivot["ticker"].map(name_map))
+    pivot.insert(2, "last_close", pivot["ticker"].map(last_map))
+    if "Ensemble" in pivot.columns:
+        pivot = pivot.sort_values("Ensemble", ascending=False).reset_index(drop=True)
+
+    st.subheader(f"21-day Outlook — {forecast_date}")
+
+    # Metric cards (top movers by ensemble upside)
+    N_CARDS = 8
+    card_rows = pivot.head(min(N_CARDS, len(pivot)))
+    cols = st.columns(len(card_rows))
+    for col, (_, row) in zip(cols, card_rows.iterrows()):
+        up = row.get("Ensemble", float("nan"))
+        col.metric(label=row["ticker"],
+                   value=f"${row['last_close']:.2f}",
+                   delta=f"{up:+.1f}%" if pd.notna(up) else "—")
+    if len(pivot) > N_CARDS:
+        st.caption(f"Showing top {N_CARDS} of {len(pivot)} assets by ensemble 21-day upside.")
+
+    st.divider()
+
+    # Per-model upside table (%), ensemble first
+    model_cols = [c for c in ["Ensemble", "NHITS", "PatchTST", "TFT",
+                              "Kronos-base", "Kronos-small", "Kronos-mini"]
+                  if c in pivot.columns]
+    show = pivot[["ticker", "name", "last_close"] + model_cols].copy()
+    show.columns = ["Ticker", "Name", "Last"] + [f"{m} %" for m in model_cols]
+
+    def _color_pct(val):
+        if isinstance(val, float) and pd.notna(val):
+            return f"color: {'#26a69a' if val >= 0 else '#ef5350'}"
+        return ""
+
+    fmt = {"Last": "${:.2f}"}
+    fmt.update({f"{m} %": "{:+.1f}%" for m in model_cols})
+    styled = show.style.format(fmt, na_rep="—").map(
+        _color_pct, subset=[f"{m} %" for m in model_cols])
+    st.dataframe(styled, use_container_width=True, hide_index=True)
+    st.download_button("Download forecast CSV", df_e.to_csv(index=False).encode(),
+                       file_name=selected_ens_file.name, mime="text/csv")
+
+    st.divider()
+
+    # --- Per-ticker forecast chart: ensemble band + member model lines ---
+    st.subheader("Forecast Path")
+    sel = st.selectbox("Select asset", pivot["ticker"].tolist(),
+                       format_func=lambda t: f"{t} — {name_map.get(t, '')}")
+
+    g = df_e[df_e["ticker"] == sel].copy()
+    last_close = float(g["last_close"].iloc[0])
+    g_ens = g[g["model"] == "Ensemble"].sort_values("pred_day")
+
+    fig = go.Figure()
+    if not g_ens.empty and g_ens["pred_high"].notna().any():
+        fig.add_trace(go.Scatter(
+            x=list(g_ens["pred_day"]) + list(g_ens["pred_day"][::-1]),
+            y=list(g_ens["pred_high"]) + list(g_ens["pred_low"][::-1]),
+            fill="toself", fillcolor="rgba(99,110,250,0.12)",
+            line=dict(color="rgba(0,0,0,0)"), name="Ensemble band", hoverinfo="skip"))
+    for m in [x for x in g["model"].unique() if x != "Ensemble"]:
+        gm = g[g["model"] == m].sort_values("pred_day")
+        fig.add_trace(go.Scatter(x=gm["pred_day"], y=gm["pred_close"], mode="lines",
+                                 line=dict(width=1, dash="dot"), name=m, opacity=0.6))
+    if not g_ens.empty:
+        fig.add_trace(go.Scatter(x=g_ens["pred_day"], y=g_ens["pred_close"], mode="lines+markers",
+                                 line=dict(width=3, color="#636efa"), name="Ensemble"))
+    fig.add_hline(y=last_close, line_dash="dash", line_color="gray",
+                  annotation_text=f"last ${last_close:.2f}")
+    fig.update_layout(height=460, xaxis_title="Trading days ahead",
+                      yaxis_title="Predicted close (USD)",
+                      legend=dict(orientation="h", y=1.02, yanchor="bottom"))
+    st.plotly_chart(fig, use_container_width=True)
+
+# ---------------------------------------------------------------------------
+# Page 6 — Backtest Results (walk-forward model comparison)
+# ---------------------------------------------------------------------------
+
+elif page == "Backtest Results":
+    st.title("Forecast Model Backtest")
+    st.caption(
+        "Walk-forward out-of-sample benchmark comparing Kronos, N-HiTS, PatchTST, TFT, "
+        "and their equal-weight Ensemble. Each window retrains neural models on the prior "
+        "~400 days and scores the next 21-day horizon. No look-ahead bias."
+    )
+
+    PORTFOLIO_DIR.mkdir(parents=True, exist_ok=True)
+    bench_files = sorted(PORTFOLIO_DIR.glob("forecast_benchmark_*.csv"))
+    if not bench_files:
+        st.info(
+            "No benchmark results found. Run `scripts/forecast_benchmark.py` to generate one.\n\n"
+            f"Expected location: `{PORTFOLIO_DIR}/forecast_benchmark_YYYY-MM-DD.csv`\n\n"
+            "Example: `python scripts/forecast_benchmark.py` (uses the portfolio tickers by default)"
+        )
+        st.stop()
+
+    df_b = pd.read_csv(selected_bench_file)
+    run_date = selected_bench_file.stem.replace("forecast_benchmark_", "")
+
+    # ── Summary leaderboard (mean across all tickers) ─────────────────────────
+    st.subheader(f"Leaderboard — {run_date}")
+
+    MODEL_ORDER = ["Ensemble", "TFT", "PatchTST", "NHITS", "Kronos-base",
+                   "Kronos-small", "Kronos-mini"]
+    present_models = [m for m in MODEL_ORDER if m in df_b["model"].unique()]
+    other_models = [m for m in df_b["model"].unique() if m not in MODEL_ORDER]
+    all_models = present_models + other_models
+
+    agg = (df_b.groupby("model")
+               .agg(RMSE=("rmse", "mean"), MAE=("mae", "mean"),
+                    MAPE=("mape", "mean"), DirAcc=("dir_acc", "mean"),
+                    Tickers=("ticker", "nunique"), Windows=("n_windows", "sum"))
+               .reindex(all_models).dropna(how="all").reset_index())
+    agg.rename(columns={"model": "Model"}, inplace=True)
+    agg = agg.sort_values("MAPE")
+
+    # Metric cards for top-3
+    cols3 = st.columns(min(3, len(agg)))
+    medals = ["🥇", "🥈", "🥉"]
+    for i, (col, (_, row)) in enumerate(zip(cols3, agg.head(3).iterrows())):
+        col.metric(
+            label=f"{medals[i]} {row['Model']}",
+            value=f"MAPE {row['MAPE']:.2f}%",
+            delta=f"DirAcc {row['DirAcc']:.1f}%",
+            delta_color="normal",
+        )
+
+    st.divider()
+
+    # Full leaderboard table
+    def _color_mape(val):
+        if pd.isna(val):
+            return ""
+        mn, mx = agg["MAPE"].min(), agg["MAPE"].max()
+        ratio = (val - mn) / max(mx - mn, 1e-9)
+        r = int(239 * ratio + 38 * (1 - ratio))
+        g = int(83 * ratio + 166 * (1 - ratio))
+        b = int(80 * ratio + 154 * (1 - ratio))
+        return f"color: rgb({r},{g},{b})"
+
+    def _color_dir(val):
+        if pd.isna(val):
+            return ""
+        return f"color: {'#26a69a' if val >= 50 else '#ef5350'}"
+
+    styled_agg = (
+        agg.style
+        .format({"RMSE": "{:.2f}", "MAE": "{:.2f}", "MAPE": "{:.2f}%",
+                 "DirAcc": "{:.1f}%", "Tickers": "{:.0f}", "Windows": "{:.0f}"}, na_rep="—")
+        .map(_color_mape, subset=["MAPE"])
+        .map(_color_dir, subset=["DirAcc"])
+    )
+    st.dataframe(styled_agg, use_container_width=True, hide_index=True)
+
+    st.divider()
+
+    # ── Bar chart: MAPE by model ──────────────────────────────────────────────
+    st.subheader("MAPE by Model (lower is better)")
+    colors = {"Ensemble": "#636efa", "TFT": "#ef553b", "PatchTST": "#00cc96",
+              "NHITS": "#ab63fa", "Kronos-base": "#ffa15a",
+              "Kronos-small": "#19d3f3", "Kronos-mini": "#ff6692"}
+
+    fig_bar = go.Figure()
+    for _, row in agg.iterrows():
+        fig_bar.add_trace(go.Bar(
+            x=[row["Model"]], y=[row["MAPE"]],
+            name=row["Model"],
+            marker_color=colors.get(row["Model"], "#8c8c8c"),
+            text=[f"{row['MAPE']:.2f}%"],
+            textposition="outside",
+        ))
+    fig_bar.update_layout(
+        height=380, showlegend=False,
+        yaxis_title="Mean MAPE % (across tickers)",
+        xaxis_title="Model",
+        yaxis=dict(range=[0, agg["MAPE"].max() * 1.25]),
+    )
+    st.plotly_chart(fig_bar, use_container_width=True)
+
+    # ── Directional accuracy bar chart ────────────────────────────────────────
+    st.subheader("Directional Accuracy by Model")
+    fig_dir = go.Figure()
+    for _, row in agg.iterrows():
+        fig_dir.add_trace(go.Bar(
+            x=[row["Model"]], y=[row["DirAcc"]],
+            name=row["Model"],
+            marker_color=colors.get(row["Model"], "#8c8c8c"),
+            text=[f"{row['DirAcc']:.1f}%"],
+            textposition="outside",
+        ))
+    fig_dir.add_hline(y=50, line_dash="dash", line_color="gray",
+                      annotation_text="50% (random)")
+    fig_dir.update_layout(
+        height=380, showlegend=False,
+        yaxis_title="Directional accuracy %",
+        xaxis_title="Model",
+        yaxis=dict(range=[0, 100]),
+    )
+    st.plotly_chart(fig_dir, use_container_width=True)
+
+    st.divider()
+
+    # ── Per-ticker breakdown ──────────────────────────────────────────────────
+    st.subheader("Per-Ticker Detail")
+
+    metric_choice = st.radio("Metric", ["MAPE", "MAE", "RMSE", "DirAcc"],
+                             horizontal=True, index=0)
+    tickers_in = sorted(df_b["ticker"].unique())
+    ticker_sel = st.multiselect("Filter tickers", tickers_in, default=tickers_in)
+
+    sub_b = df_b[df_b["ticker"].isin(ticker_sel)].copy()
+
+    fig_heat = go.Figure(data=go.Heatmap(
+        z=sub_b.pivot_table(index="ticker", columns="model",
+                            values=metric_choice.lower(), aggfunc="mean")
+                .reindex(columns=all_models).values,
+        x=[m for m in all_models if m in sub_b["model"].unique()],
+        y=sub_b.pivot_table(index="ticker", columns="model",
+                            values=metric_choice.lower(), aggfunc="mean")
+                .reindex(columns=all_models).index.tolist(),
+        colorscale="RdYlGn_r" if metric_choice != "DirAcc" else "RdYlGn",
+        text=sub_b.pivot_table(index="ticker", columns="model",
+                               values=metric_choice.lower(), aggfunc="mean")
+                   .reindex(columns=all_models).values.round(2),
+        texttemplate="%{text}",
+        showscale=True,
+    ))
+    fig_heat.update_layout(
+        height=max(350, 30 * len(ticker_sel) + 100),
+        xaxis_title="Model", yaxis_title="Ticker",
+        title=f"{metric_choice} heatmap — lower is better"
+               if metric_choice != "DirAcc" else "Directional Accuracy heatmap — higher is better",
+    )
+    st.plotly_chart(fig_heat, use_container_width=True)
+
+    st.download_button(
+        "Download benchmark CSV", df_b.to_csv(index=False).encode(),
+        file_name=selected_bench_file.name, mime="text/csv",
+    )
+
+# ---------------------------------------------------------------------------
+# Page 7 — Technical Signals (Murphy indicator toolkit + weight-of-evidence)
+# ---------------------------------------------------------------------------
+
+elif page == "Technical Signals":
+    st.title("Murphy Technical Signals")
+    st.caption(
+        "Weight-of-evidence scoring from John J. Murphy's *Technical Analysis of the "
+        "Financial Markets*. Ten rules vote +1/–1/0, split into trend-following "
+        "(MA cross, MA alignment, ADX/DI, MACD, OBV, Donchian breakout) and oscillators "
+        "(RSI, Stochastic, Williams %R, ROC). Generate with `scripts/technical_signals.py`."
+    )
+
+    PORTFOLIO_DIR.mkdir(parents=True, exist_ok=True)
+    sig_files = sorted(PORTFOLIO_DIR.glob("technical_signals_*.csv"))
+    if not sig_files:
+        st.info(
+            "No technical-signal run found. Generate one with "
+            "`python scripts/technical_signals.py --no-fetch` "
+            "(add `--portfolio` for just your holdings).\n\n"
+            f"Expected: `{PORTFOLIO_DIR}/technical_signals_YYYY-MM-DD.csv`"
+        )
+        st.stop()
+
+    selected_sig_file = st.selectbox(
+        "Signal date", sig_files, index=len(sig_files) - 1,
+        format_func=lambda p: p.stem.replace("technical_signals_", ""),
+    )
+    df_s = pd.read_csv(selected_sig_file)
+
+    # --- Rating distribution cards -----------------------------------------
+    RATINGS = ["STRONG BUY", "BUY", "HOLD", "SELL", "STRONG SELL"]
+    counts = df_s["rating"].value_counts()
+    cols = st.columns(len(RATINGS))
+    for col, r in zip(cols, RATINGS):
+        col.metric(r.title(), int(counts.get(r, 0)))
+
+    st.divider()
+
+    # --- Signal table with rating + per-rule votes -------------------------
+    sig_cols = [f"sig_{k}" for k in (*TREND_SIGNALS, *OSC_SIGNALS)]
+    # Distinct labels — must not collide with the raw "ADX"/"RSI" value columns,
+    # or pandas Styler fails on non-unique columns.
+    pretty = {
+        "sig_ma_cross": "GC/DC", "sig_ma_align": "MA≡", "sig_adx_di": "DI",
+        "sig_macd": "MACD", "sig_obv": "OBV", "sig_donchian": "Donch",
+        "sig_rsi": "RSI±", "sig_stoch": "Stoch", "sig_williams": "%R", "sig_roc": "ROC",
+    }
+
+    view_cols = ["ticker", "name", "last_close", "rating", "murphy_score",
+                 "trend_score", "osc_score", "adx", "rsi"] + sig_cols
+    show = df_s[[c for c in view_cols if c in df_s.columns]].copy()
+    show = show.rename(columns={
+        "ticker": "Ticker", "name": "Name", "last_close": "Last",
+        "rating": "Rating", "murphy_score": "Score",
+        "trend_score": "Trend", "osc_score": "Osc",
+        "adx": "ADX", "rsi": "RSI", **pretty,
+    })
+
+    def _color_rating(val):
+        colors = {"STRONG BUY": "#1b7f3b", "BUY": "#26a69a", "HOLD": "#9e9e9e",
+                  "SELL": "#ef5350", "STRONG SELL": "#b71c1c"}
+        return f"color: {colors.get(val, '')}; font-weight: 600"
+
+    def _color_vote(val):
+        if val == 1:
+            return "color: #26a69a"
+        if val == -1:
+            return "color: #ef5350"
+        return "color: #6b6b6b"
+
+    def _color_score(val):
+        if isinstance(val, (int, float)) and pd.notna(val):
+            return f"color: {'#26a69a' if val > 0 else '#ef5350' if val < 0 else '#9e9e9e'}"
+        return ""
+
+    vote_labels = [pretty[c] for c in sig_cols]
+    fmt = {"Last": "${:.2f}", "ADX": "{:.0f}", "RSI": "{:.0f}"}
+    fmt.update({lbl: "{:+d}" for lbl in vote_labels})
+    styled = (
+        show.style.format(fmt, na_rep="—")
+        .map(_color_rating, subset=["Rating"])
+        .map(_color_score, subset=["Score", "Trend", "Osc"])
+        .map(_color_vote, subset=vote_labels)
+    )
+    st.dataframe(styled, use_container_width=True, hide_index=True, height=560)
+    st.download_button("Download signals CSV", df_s.to_csv(index=False).encode(),
+                       file_name=selected_sig_file.name, mime="text/csv")
+
+    st.caption("Vote legend: +1 bullish · −1 bearish · 0 neutral. "
+               "Trend tools lead in trending markets (ADX ≥ 25); oscillators lead in ranges.")
+
+    st.divider()
+
+    # --- Per-ticker indicator detail chart ---------------------------------
+    st.subheader("Indicator Detail")
+    sel = st.selectbox("Select asset", df_s["ticker"].tolist(),
+                       format_func=lambda t: f"{t} — "
+                       f"{df_s.loc[df_s['ticker'] == t, 'name'].iloc[0]}")
+    row = df_s[df_s["ticker"] == sel].iloc[0]
+
+    df_ohlc = load_ohlcv(sel)
+    if not df_ohlc.empty:
+        from src.screening.murphy import murphy_indicators
+        ind = murphy_indicators(df_ohlc).tail(252)
+
+        fig = make_subplots(
+            rows=3, cols=1, shared_xaxes=True, row_heights=[0.5, 0.25, 0.25],
+            vertical_spacing=0.04,
+            subplot_titles=("Price · SMA50 · SMA200 · Donchian", "ADX / +DI / −DI", "RSI · Stochastic"),
+        )
+        # Price panel
+        fig.add_trace(go.Scatter(x=ind["Date"], y=ind["Close"], name="Close",
+                                 line=dict(color="#e0e0e0", width=1.5)), row=1, col=1)
+        fig.add_trace(go.Scatter(x=ind["Date"], y=ind["SMA50"], name="SMA50",
+                                 line=dict(color="#42a5f5", width=1)), row=1, col=1)
+        fig.add_trace(go.Scatter(x=ind["Date"], y=ind["SMA200"], name="SMA200",
+                                 line=dict(color="#ffa726", width=1)), row=1, col=1)
+        fig.add_trace(go.Scatter(x=ind["Date"], y=ind["donchian_high"], name="Donchian hi",
+                                 line=dict(color="#66bb6a", width=0.7, dash="dot")), row=1, col=1)
+        fig.add_trace(go.Scatter(x=ind["Date"], y=ind["donchian_low"], name="Donchian lo",
+                                 line=dict(color="#ef5350", width=0.7, dash="dot")), row=1, col=1)
+        # ADX / DI panel
+        fig.add_trace(go.Scatter(x=ind["Date"], y=ind["ADX"], name="ADX",
+                                 line=dict(color="#ab47bc", width=1.2)), row=2, col=1)
+        fig.add_trace(go.Scatter(x=ind["Date"], y=ind["plus_di"], name="+DI",
+                                 line=dict(color="#26a69a", width=0.9)), row=2, col=1)
+        fig.add_trace(go.Scatter(x=ind["Date"], y=ind["minus_di"], name="−DI",
+                                 line=dict(color="#ef5350", width=0.9)), row=2, col=1)
+        fig.add_hline(y=25, line_dash="dash", line_color="gray", row=2, col=1)
+        # RSI / Stochastic panel
+        fig.add_trace(go.Scatter(x=ind["Date"], y=ind["RSI"], name="RSI",
+                                 line=dict(color="#29b6f6", width=1)), row=3, col=1)
+        fig.add_trace(go.Scatter(x=ind["Date"], y=ind["stoch_k"], name="Stoch %K",
+                                 line=dict(color="#ffca28", width=0.9)), row=3, col=1)
+        fig.add_hline(y=70, line_dash="dot", line_color="gray", row=3, col=1)
+        fig.add_hline(y=30, line_dash="dot", line_color="gray", row=3, col=1)
+
+        fig.update_layout(height=680, hovermode="x unified",
+                          legend=dict(orientation="h", y=1.04, yanchor="bottom"),
+                          margin=dict(l=0, r=0, t=60, b=0))
+        st.plotly_chart(fig, use_container_width=True)
+
+    st.markdown(
+        f"**{sel}** — rating **{row['rating']}** "
+        f"(score {int(row['murphy_score'])}: trend {int(row['trend_score'])}, "
+        f"oscillator {int(row['osc_score'])}). "
+        f"ADX {row['adx']:.0f}, RSI {row['rsi']:.0f}, "
+        f"+DI {row['plus_di']:.0f} / −DI {row['minus_di']:.0f}."
+    )

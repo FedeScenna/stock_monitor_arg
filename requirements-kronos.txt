@@ -9,3 +9,10 @@ einops==0.8.1
 safetensors==0.6.2
 huggingface_hub==0.33.1
 tqdm==4.67.1
+
+# Nixtla deep time-series models for the multi-model ensemble
+# (scripts/forecast_benchmark.py, scripts/ensemble_forecast.py: N-HiTS, PatchTST, TFT).
+# NOTE: coreforecast must be pinned to 0.0.15 — the 0.0.16/0.0.17 Windows wheels
+# crash on import (access violation) with this torch/numpy stack.
+neuralforecast>=3.0,<4.0
+coreforecast==0.0.15
